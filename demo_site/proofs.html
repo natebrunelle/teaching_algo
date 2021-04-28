@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - On Proofs</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; On Proofs</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#varieties-of-proof"><span class="toc-section-number">1</span> Varieties of proof</a>
+        <ul>
+        <li><a href="#colloquial-proof"><span class="toc-section-number">1.1</span> Colloquial proof</a></li>
+        <li><a href="#whiteboard-proof"><span class="toc-section-number">1.2</span> Whiteboard proof</a></li>
+        <li><a href="#prose-proof"><span class="toc-section-number">1.3</span> Prose proof</a></li>
+        <li><a href="#machine-checkable-proof"><span class="toc-section-number">1.4</span> Machine-checkable proof</a>
+        <ul>
+        <li><a href="#proof-carrying-code"><span class="toc-section-number">1.4.1</span> Proof-carrying code</a></li>
+        </ul></li>
+        <li><a href="#computer-assisted-proof"><span class="toc-section-number">1.5</span> Computer-assisted proof</a></li>
+        </ul></li>
+        <li><a href="#why-proofs"><span class="toc-section-number">2</span> Why proofs</a></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+            <p>A major component of this course is proofs. There are several varieties of proof, and more than one approach and purpose to some. The terminology on this page is intended to be instructive, not formal, and other sources (even other sources by the same author) may use different terminology or break proofs into a different set of varieties.</p>
+            <h1 data-number="1" id="varieties-of-proof" data-number="1"><span class="header-section-number">1</span> Varieties of proof</h1>
+            <h2 data-number="1.1" id="colloquial-proof" data-number="1.1"><span class="header-section-number">1.1</span> Colloquial proof</h2>
+            <p>Often when people refer to <q>proof</q> they mean it is a very loose, colloquial sense to mean, roughly, <q>something that can convince you something is inevitably or objectively (as opposed to probably or subjectively) true.</q> Colloquial proofs include</p>
+            <dl>
+            <dt>Fallacies</dt>
+            <dd><p>Arguments some people accept as proofs, but which are actually unsound. There are <a href="https://en.wikipedia.org/wiki/List_of_fallacies">many</a> varieties of fallacy.</p>
+            <div class="example">
+            <p>I have a Ph.D. and you don’t, so if we disagree I’m right and you are wrong</p>
+
+            </div>
+            </dd>
+            <dt>Hand-waving proofs</dt>
+            <dd><p>Arguments that skip a lot of material, implying that it is tedious to verify and I did the tedium so you don’t have too.</p>
+            <div class="example long">
+            <p>From <a href="https://en.wikipedia.org/wiki/Collatz_conjecture#Cycle_length">wikipedia</a>:</p>
+            <p>the period <span class="math inline">p</span> of any non-trivial cycle of the Collatz function is of the form <span class="math display">p = 301994 a + 17087915 b + 85137581 c</span> where <span class="math inline">b\geq 1</span> and <span class="math inline">a c = 0</span>. This result is based on the continued fraction expansion of <span class="math inline">\log 3 / \log 2</span>.</p>
+
+            </div>
+            </dd>
+            <dt>Proof outlines</dt>
+            <dd><p>Arguments that are intended to include the main ideas that could be used to create a proof.</p>
+            <div class="example long">
+            <p>All primes greater than 3 are exactly one away from a multiple of 6. This is because any number <span class="math inline">(6n+i)</span>, where <span class="math inline">i</span> is one of <span class="math inline">\{0, 2, 3, 4\}</span>, has either 2 or 3 as a factor.</p>
+
+            </div>
+            <p>Note that what might look like a proof outline to one audience might look like a <a href="#prose-proof">prose proof</a> to another audience with more experience in the domain.</p>
+            </dd>
+            </dl>
+            <p>A goal of this course is to help you develop the experience and skills needed to evaluate good and bad colloquial proofs. However, a study of this form of argument is not a primary component of this course.</p>
+            <h2 data-number="1.2" id="whiteboard-proof" data-number="1.2"><span class="header-section-number">1.2</span> Whiteboard proof</h2>
+            <p>Most proofs have too many steps to hold them all in your working memory at once. Whether creating such a proof or trying to understand one someone else created, it can be useful to create a whiteboard proof version of it. Whiteboard proofs contain all of the components of a proof, written (or drawn or otherwise represented) outside your head so you don’t have to worry about forgetting them, but lack the context and polish to be meaningful to those not present during their construction—including, notably, the future selves of those who created it. Once you’ve created or understood the prose proof, you erase the board, because whiteboard proofs are a means to an end, not an end in themselves.</p>
+            <p>Whiteboard proofs will be used extensively in class presentations, and you should create them first every time you go to write a proof. Because they are only for the benefit of those working on the proof, they do not need to abide by any particular style or structure. That said, we will show a few patterns of whiteboard proofs in class that you might find useful to use yourself.</p>
+            <h2 data-number="1.3" id="prose-proof" data-number="1.3"><span class="header-section-number">1.3</span> Prose proof</h2>
+            <p>The final versions of high-quality proofs, as they appear in publications, are a specialized type of language arts. Their tone, grammar, and even typeface communicate <q>I know what I’m doing, trust me.</q> Their content is a progression of steps at just the right resolution so that the target audience can see how each follows logically without seeming too obvious. Their ordering and presentation is selected to make the conclusion feel almost inevitable.</p>
+            <div class="example long">
+            <p>The theorem <q>There are infinitely many primes</q> can be proven as follows:</p>
+            <div class="proof">
+            <p>Let <span class="math inline">P</span> be the set of all primes. Assume that <span class="math inline">|P|</span> is finite and define <span class="math inline">p_p</span> as <span class="math display">p_p \triangleq \prod_{x \in P} x</span> Let <span class="math inline">p&#39;</span> be <span class="math inline">p_p + 1</span>. Then <span class="math inline">p&#39;</span> must not have any factor in <span class="math inline">P</span> because <span class="math inline">p&#39; = 1 \mod p</span> for every <span class="math inline">p \in P</span>. Hence either <span class="math inline">p&#39;</span> is a prime not in <span class="math inline">P</span>, or it has as a factor a different prime not in <span class="math inline">P</span>. But this contradicts our definition of <span class="math inline">P</span>, so our assumption must be false, meaning <span class="math inline">|P|</span> is not finite.</p>
+            </div>
+
+            </div>
+            <!--
+            clear to a skeptic
+            not obvious but inevitable
+            -->
+            <p>As with other advanced forms of language arts, such as poetry and novels, full prose proofs cannot be mastered in a single semester: it takes years of diligent practice to hone those skills. However, we can and will spend time both reading and writing them in class, treating this class, in part, as an introduction to this art form.</p>
+            <h2 data-number="1.4" id="machine-checkable-proof" data-number="1.4"><span class="header-section-number">1.4</span> Machine-checkable proof</h2>
+            <p>A machine-checkable proof is a sequence of small, detailed steps taken from a very restricted vocabulary of proof steps. They are designed to allow the rapid conveyance of certainty of very large thoerems: rapid and large because computers are fast, certainty because they are made of such simple steps that humans can read, understand, and believe their checkers easily.</p>
+            <div class="aside long">
+            <p>I had originally intended to have building a proof checker as a major component of this course. I wrote several 100-lines-of-code example implementations to make sure it was doable, and I think most of you would find it easily within your grasp.</p>
+            <p>However, all my reference solutions required some recursion, and knowledge of how to program recursion is not an official prerequisite of this course. Hence, it is not listed as an assignment in this course offering.</p>
+
+            </div>
+            <p>We will spend some time working proofs at nearly machine-checkable detail in this course, and might have you work with a proof checker for a few exercises.</p>
+            <div class="example long">
+            <p>The following is a machine-checkable variant of the derivation given in ∀x 19.6, proving that <span class="math inline">\lnot(A \land B)</span> implies <span class="math inline">\lnot A \lor \lnot B</span>:</p>
+            <table class="TFL">
+            <tr>
+            <td>
+            1
+            </td>
+            <td>
+            <span class="math inline">\lnot(A \land B)</span>
+            </td>
+            </tr>
+            <tr class="then">
+            <td>
+            2
+            </td>
+            <td>
+            <table class="TFL">
+            <tr>
+            <td>
+            2
+            </td>
+            <td>
+            <span class="math inline">A</span>
+            </td>
+            </tr>
+            <tr class="then">
+            <td>
+            3
+            </td>
+            <td>
+            <table class="TFL">
+            <tr>
+            <td>
+            3
+            </td>
+            <td>
+            <span class="math inline">B</span>
+            </td>
+            </tr>
+            <tr class="then">
+            <td>
+            4
+            </td>
+            <td>
+            <span class="math inline">A \land B</span>
+            </td>
+            <td>
+            <span class="math inline">\land</span>I 2, 3
+            </td>
+            </tr>
+            <tr>
+            <td>
+            5
+            </td>
+            <td>
+            <span class="math inline">\perp</span>
+            </td>
+            <td>
+            <span class="math inline">\lnot</span>E 1, 4
+            </td>
+            </tr>
+            </table>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            4
+            </td>
+            <td>
+            <span class="math inline">\lnot B</span>
+            </td>
+            <td>
+            <span class="math inline">\lnot</span>I 3
+            </td>
+            </tr>
+            <tr>
+            <td>
+            5
+            </td>
+            <td>
+            <span class="math inline">\lnot A \lor \lnot B</span>
+            </td>
+            <td>
+            <span class="math inline">\lor</span>I 4
+            </td>
+            </tr>
+            </table>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            3
+            </td>
+            <td>
+            <table class="TFL">
+            <tr>
+            <td>
+            3
+            </td>
+            <td>
+            <span class="math inline">\lnot A</span>
+            </td>
+            </tr>
+            <tr class="then">
+            <td>
+            4
+            </td>
+            <td>
+            <span class="math inline">\lnot A \lor \lnot B</span>
+            </td>
+            <td>
+            <span class="math inline">\lor</span>I 3
+            </td>
+            </tr>
+            </table>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            4
+            </td>
+            <td>
+            <span class="math inline">\lnot A \lor \lnot B</span>
+            </td>
+            <td>
+            LEM 2, 3
+            </td>
+            </tr>
+            </table>
+            <p>Of course, to actually be checkable by machine it would not be presented visually like this, but the level of detail above is machine-checkable.</p>
+
+            </div>
+            <h3 data-number="1.4.1" id="proof-carrying-code" data-number="1.4.1"><span class="header-section-number">1.4.1</span> Proof-carrying code</h3>
+            <p>A special case of machine-checkable proofs is proof-carrying code. Proof-carrying code consists of three parts:</p>
+            <ul>
+            <li>Code</li>
+            <li>Assertions about the code, such as <q>this list index is never out of bounds</q></li>
+            <li>Machine-checkable proofs of those assertions</li>
+            </ul>
+            <p>All three are transferred together, as e.g. by embedding the assertions and proofs in specially formatted comments.</p>
+            <p>Type-checking of statically-typed languages like C and Java is a very limited special case of machine-checkable proofs: saying <code class="sourceCode java"><span class="dt">int</span> x</code> is an assertion that all subsequent lines that begin <code>x =</code> will have an <code>int</code> on the right-hand side, and type systems are designed so that proof steps are implicit in the language specification itself.</p>
+            <p>While we will discuss some proofs of code in this course, and many more such proofs in courses that follow it, our curriculum does not use proof-carrying code directly.</p>
+            <h2 data-number="1.5" id="computer-assisted-proof" data-number="1.5"><span class="header-section-number">1.5</span> Computer-assisted proof</h2>
+            <p>Creating proofs is hard. Not just hard in a fuzzy human sense; provably hard. One corollary of <a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Rice’s Theorem</a> is that for <em>any</em> feature you might want to prove about a computer program (e.g., <q>it does not email rude things to all my contacts and then erase my entire disk</q>) there exist programs have the feature, but no automated process can prove they have the feature.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+            <p>However, we have computer programs that can do a lot toward automating proofs; coupled with human creativity and intuition, these can result in much more complex and detailed proofs than either computer or human can (efficiently) do alone. These proof assistant tools generally take input in the form of major proof steps and decisions, and can output various forms ranging from <a href="#machine-checkable-proofs">machine-checkable</a> lists of small, simple steps to a rough draft of a <a href="#prose-proof">prose proof</a>.</p>
+            <p>Another variant of this course at UVA makes use of a proof assistant tool (<a href="https://leanprover.github.io">L∃∀N</a>), which allows the course to be more formal and explore a large scope of proofs. This variant of the course does not use any such tool.</p>
+            <p>Computers can also assist in creating proofs that are simply too large for humans to handle, verifying by brute force that every one of many thousands of cases individually work out. Several significant theorems have been proven this way, perhaps most famously the <a href="https://en.wikipedia.org/wiki/Four_color_theorem">four color theorem</a>.</p>
+            <h1 data-number="2" id="why-proofs" data-number="2"><span class="header-section-number">2</span> Why proofs</h1>
+            <p>Some of you will end up proving things to humans, as e.g. by engaging in theoretical CS research. This course will be the first of many steps in developing that ability.</p>
+            <p>Many of you will need to evaluate putative proofs provided by others. This course will help you develop that ability.</p>
+            <p>All of you will need to be careful in your thinking and notice when you are making invalid leaps of judgment and overlooking corner cases. Working with proofs provides a fertile training ground in developing this ability.</p>
+            <p>Part of the goal of a university education is provide an understanding of the world so it ceases to be mysterious. Many people treat proofs as mysterious and infallible; we hope this course will explore them enough that you will stop seeing them as either.</p>
+            <section class="footnotes" role="doc-endnotes">
+            <hr />
+            <ol>
+            <li id="fn1" role="doc-endnote"><p> Actually, this is not quite what Rice’s theorem claims. More accurately, for any functional property and any given finite set of automated proving processes, there exist programs with the property but which none of those processes can prove have the property. i.e., ∀ prop ∀ provers ∃ program s.t. program has prop and prover cannot prove program has prop.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            </ol>
+            </section>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Week 8 Guide</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Week 8 Guide</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="structure.html">Course Structure</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+          <li><p class="navbar-text"><a href="weekly_guides.html">Weekly Guides</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#goals"><span class="toc-section-number">1</span> Goals</a></li>
+        <li><a href="#schedule"><span class="toc-section-number">2</span> Schedule</a></li>
+        <li><a href="#cohort-problems"><span class="toc-section-number">3</span> Cohort Problems</a></li>
+        <li><a href="#reading"><span class="toc-section-number">4</span> Reading</a></li>
+        <li><a href="#videos"><span class="toc-section-number">5</span> Videos</a></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+                  <!--<blockquote style="background-color:#fbb; font-size:150%">This page is currently under construction. Any content you see now is subject to change until the start of the coming semester. Expect some links to be broken.</blockquote>-->
+      <h1 data-number="1" id="goals" data-number="1"><span class="header-section-number">1</span> Goals</h1>
+      <p>This week, we introduce the most important and widely used model of computation, the Turing machine, and start to address the big question of what can and cannot be computed by any machine with a finite description.</p>
+      <p>The main goals for Week 8 are to:</p>
+      <ul>
+      <li>Understand what cannot be computed by a finite automaton and why.</li>
+      <li>Use and understand Turing Machines as a model of computing.</li>
+      <li>Study a definition of computability.</li>
+      <li>Explore the powers and limitations of Turing Machines.</li>
+      <li>Understand why some numbers are <em>uncomputable</em>, and what this means.</li>
+      <li>Learn different variations on Turing Machines and how they can be transformed.</li>
+      </ul>
+      <h1 data-number="2" id="schedule" data-number="2"><span class="header-section-number">2</span> Schedule</h1>
+      <table>
+      <colgroup>
+      
+      
+      
+      
+      
+      
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th style="text-align: center;">Day</th>
+      <th style="text-align: center;"><q>Tuesday</q> Cohort</th>
+      <th style="text-align: center;"><q>Wednesday</q> Cohort</th>
+      <th style="text-align: center;"><q>Thursday</q> Cohort</th>
+      <th style="text-align: center;"><q>Friday</q> Cohort</th>
+      <th style="text-align: center;"><q>Sunday</q> Cohort</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Thurs</strong> 25 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Fri</strong> 26 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Sat</strong> 27 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Sun</strong> 28 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Mon</strong> 29 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Tues</strong> 30 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Wed</strong> 31 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;">Revision</td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      <td style="text-align: center;">Preparation</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Thurs</strong> 01 Apr</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 7)</font></td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      <td style="text-align: center;">Revision</td>
+      <td style="text-align: center;">Preparation</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Fri</strong> 02 Apr</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Sat</strong> 03 Apr</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      <td style="text-align: center;">Revision</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Sun</strong> 04 Apr</td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Mon</strong> 05 Apr</td>
+      <td style="text-align: center;">Revision</td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Tues</strong> 06 Apr</td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      <td style="text-align: center;">Revision</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Wed</strong> 07 Apr</td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Thurs</strong> 08 Apr</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 9)</font></td>
+      </tr>
+      </tbody>
+      </table>
+      <h1 data-number="3" id="cohort-problems" data-number="3"><span class="header-section-number">3</span> Cohort Problems</h1>
+      <p>These are the problems you should discuss in your Cohort Meeting, and everyone in your cohort should be prepared to present and discuss solutions to at the Assessed Cohort Meeting:</p>
+      <ul>
+      <li><a href="files/ps/week8_blank.pdf">Cohort Problems for Week 8 [PDF]</a></li>
+      <li><a href="files/ps/week8.zip">LaTeX Template for Week 8 [ZIP]</a></li>
+      </ul>
+      <p>The problems are posted here and we think its a good idea to look at them early, but you’re not expected to be able to solve them until after doing the readings and watching the videos below.</p>
+      <p>There is no programming portion for this week.</p>
+      <h1 data-number="4" id="reading" data-number="4"><span class="header-section-number">4</span> Reading</h1>
+      <p>This week we discuss the material contained in <a href="https://introtcs.org/public/lec_06_loops.html">Chapter 7: Loops and Infinity</a>.</p>
+      <p>Turing Machines and other similar models of computing are taught in many different ways in many different places. In addition to the course materials, you’ll find plenty of other presentations of this material available on youtube, other textbooks, lecture slides from other universities, blog posts, etc. Please be advised that there are many subtly different presentations of Turing machines, and so what you see elsewhere may differ from what we covered, but the key ideas are universal and should be the same in any good presentation. Typically minor changes are made to the model either for convenience of the context, or so real-world running times are more similar to the running time of the model (more on this in future weeks).</p>
+      <p>You can read Turing’s paper here: Alan M. Turing, <a href="files/computablenumbers.pdf"><em>On Computable Numbers, with an Application to the Entscheidungsproblem</em></a>. 1936.</p>
+      <h1 data-number="5" id="videos" data-number="5"><span class="header-section-number">5</span> Videos</h1>
+      You can play all the videos using this playlist, but don’t forget to take breaks: <a href="https://www.youtube.com/playlist?list=PLZ9Gk_8DtbmGERGozYoSd-kmz-tsTn2yu">Week 8 Playlist</a>
+      <p>
+      <p>Some videos are edited from these cs3102 classes (we don’t generally recommend watching the unedited versions, but they are available if you want to):</p>
+      <ul>
+      <li><p>(Fall 2019) <a href="https://uvatoc.github.io/f19/class13/">Class 13: Machines</a>: <a href="https://uva.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=89195d73-1989-4b2f-8b70-aae8014178c4">Full Video</a>, <a href="https://www.dropbox.com/s/36tv9no453ffmkn/class13_written.pptx?dl=0">Slides</a></p></li>
+      <li><p>(Fall 2019) <a href="https://uvatoc.github.io/f19/class14/">Class 14: Computability</a>: <a href="https://uva.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e086e67f-71aa-45e1-a59d-aaed01412ded">Full Video</a>, <a href="https://www.dropbox.com/s/nw9zh8a0vahvaqy/class14-inked.pdf?dl=0">Slides</a></p></li>
+      </ul>
+      </p>
+      <p>
+      Applications of Finite State Automata (6:27) <br><iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/fPAxt4LvEaU' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Warm-Up: Life on Mars (2:16) <br><iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/zpKVDZB7JiE' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Limitations of Finite Automata (6:40) <br><iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/KmAJEKRZaGY' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Turing Machines (5:37) <br><iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/Xx_GeourSOQ' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Turing Machine Example (17:59) <br><iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/6S6suD3aRxY' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Turing Machine Definition (8:31) <br><iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/qH6Ffc9H2js' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
+      </p>
+      <p>
+      What was Turing’s Model Modeling? (14:08) <br><iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/vcGxEtT3wsc' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Busy Beavers (5:12) <br><iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/yJApEB69gXo' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
+      </p>
+      <p>
+      On Uncomputable Numbers (8:13) <br><iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/Cuf4zkYwGlQ' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe><br>
+      </p>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2021 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2021-03-26 11:17
+  </footer>
+</body>
+</html>

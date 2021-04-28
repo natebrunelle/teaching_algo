@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - A Proof about Bubble-Sort</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; A Proof about Bubble-Sort</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#preliminaries"><span class="toc-section-number">1</span> Preliminaries</a></li>
+        <li><a href="#algorithm"><span class="toc-section-number">2</span> Algorithm</a></li>
+        <li><a href="#proof-of-correctness"><span class="toc-section-number">3</span> Proof of Correctness</a></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+            <h1 data-number="1" id="preliminaries" data-number="1"><span class="header-section-number">1</span> Preliminaries</h1>
+            <p>There are many sorting algorithms, some better than others. There exist strictly better algorithms than bubble sort (i.e., faster, lower-power, same-space, and simpler), the inefficiency of bubble sorts makes a proof of its correctness interesting.</p>
+            <h1 data-number="2" id="algorithm" data-number="2"><span class="header-section-number">2</span> Algorithm</h1>
+            <div class="definition">
+            <p>Let an element in a list be considered <strong>out of order</strong> if it is followed in the list by another value strictly smaller than itself.</p>
+            <p>An element that is not <em>out of order</em> is said to be <strong>in order</strong>.</p>
+            </div>
+            <p>Observe that by this definition, the last element in the list cannot be out of order, but theoretically all other elements can. That theory can be realized in practice by a list of unique elements sorted in descending order, with the first element being the largest and the last the smallest.</p>
+            <p>Consider the following algorithm:</p>
+            <dl>
+            <dt>Given</dt>
+            <dd>A list <span class="math inline">x</span> with <span class="math inline">n</span> elements, <span class="math inline">x_1</span> through <span class="math inline">x_n</span>
+            </dd>
+            <dt>Do</dt>
+            <dd><ol type="1">
+            <li><strong>repeat</strong> the following <strong>until</strong> <span class="math inline">x</span> contains no out-of-order elements</li>
+            <li>    <strong>for each</strong> <span class="math inline">i</span> from <span class="math inline">1</span> to <span class="math inline">n-1</span></li>
+            <li>        <strong>if</strong> <span class="math inline">x_i</span> is <em>out of order</em> <strong>then</strong></li>
+            <li>            swap <span class="math inline">x_i</span> and <span class="math inline">x_{i+1}</span></li>
+            <li>      <strong>end if</strong></li>
+            <li>    <strong>end for</strong></li>
+            <li><strong>end repeat</strong></li>
+            </ol>
+            </dd>
+            </dl>
+            <h1 data-number="3" id="proof-of-correctness" data-number="3"><span class="header-section-number">3</span> Proof of Correctness</h1>
+            <div class="theorem">
+            <p>Given any finite list <span class="math inline">x</span>, the above algorithm will terminate after no more than <span class="math inline">n-1</span> iterations of the outer loop.</p>
+            </div>
+            <p>To prove this theorem, we first define a <em>fixed tail</em> of a list and then prove a lemma about the inner loop.</p>
+            <div class="definition">
+            <p>A <strong>fixed tail</strong> of a list is a (possibly empty) suffix of the list such that both (a) no element outside the tail is larger than any element inside the tail and (b) all elements in the tail are <em>in order</em>.</p>
+            <p>The <strong>maximal fixed tail</strong> of a list is the largest suffix of the list that is a <em>fixed tail</em>. The portion of a list that is not part of it’s <em>maximal fixed tail</em> is the <strong>body</strong> of the list.</p>
+            </div>
+            <div class="lemma">
+            <p>Each run of the inner loop of the algorithm (lines 2–6) increases the length of the list’s <em>maximal fixed tail</em> by at least one.</p>
+            </div>
+            <div class="proof">
+            <p>Consider the largest element of the <em>body</em> of the list (if there are several elements of that value, consider the one with the largest index). Because no element before it is larger than it, the condition on line 3 will keep line 4 from moving it to an earlier index. Because it is larger than every element in the body after it, line 4 will keep pushing it to the next position until it reaches the end of the body. Because every element of the original <em>maximal fixed tail</em> is at least as large as any element of the <em>body</em>, the element will then be <em>in order</em> and stop moving. Because a <em>fixed tail</em> is <em>in order</em>, none of its elements will move either. Because the new element has no elements outside the tail that is larger than it, and it is in order, it becomes part of a new, larger, <em>maximal fixed tail</em>.</p>
+            </div>
+            <p>With this lemma, we can now prove the original theorem</p>
+            <div class="proof">
+            <p>The list <span class="math inline">x</span> initially has a <em>maximal fixed tail</em> of at least 0 elements. After each iteration of the outer loop, the <em>maximal fixed tail</em> increases in length by at least 1 element; thus, after <span class="math inline">n-1</span> iterations the <em>maximal fixed tail</em> must include all but the first element of the list. By definition, all elements in the <em>fixed tail</em> are <em>in order</em>, so it remains to show only that the first element of the list is also <em>in order</em>. Because the element following the first element is in a <em>fixed tail</em>, the element following the first element cannot be smaller than the first element. Hence, the first element is also <em>in order</em> and the outer loop will terminate.</p>
+            </div>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

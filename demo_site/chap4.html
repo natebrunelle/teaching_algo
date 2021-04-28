@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Add-ons to MCS</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Add-ons to MCS</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#sets"><span class="toc-section-number">1</span> Sets</a></li>
+        <li><a href="#sequences"><span class="toc-section-number">2</span> Sequences</a></li>
+        <li><a href="#functions"><span class="toc-section-number">3</span> Functions</a>
+        <ul>
+        <li><a href="#addenda-to-4.3.1"><span class="toc-section-number">3.1</span> Addenda to 4.3.1</a></li>
+        <li><a href="#addenda-to-4.3.2"><span class="toc-section-number">3.2</span> Addenda to 4.3.2</a></li>
+        </ul></li>
+        <li><a href="#binary-relations"><span class="toc-section-number">4</span> Binary Relations</a></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+            <h1 data-number="1" id="sets" data-number="1"><span class="header-section-number">1</span> Sets</h1>
+            <p>See the separate <a href="sets.html">sets writeup</a> and <a href="set-practice.html">sets practice</a>.</p>
+            <h1 data-number="2" id="sequences" data-number="2"><span class="header-section-number">2</span> Sequences</h1>
+            <blockquote>
+            <p>The following includes all of the text from MCS 4.2 with some clarifications and some additional definitions that MCS assumes without defining.</p>
+            </blockquote>
+            <p>Sets provide one way to group a collection of objects. Another way is in a <strong>sequence</strong>, which is a list of objects called <strong>terms</strong> or <strong>components</strong>. Short sequences are commonly described by listing the elements between parentheses; for example, <span class="math inline">(a, b, c)</span> is a sequence with three terms.</p>
+            <p>While both sets and sequences perform a gathering role, there are several differences.</p>
+            <ul>
+            <li><p>The elements of a set are required to be distinct, but terms in a sequence can be the same. Thus, <span class="math inline">(a, b, a)</span> is a valid sequence of length three, but <span class="math inline">\{a, b, a\}</span> is an incorrect way of writing a set, and if taken as a set is most likely a set with two elements, not three.</p></li>
+            <li><p>The terms in a sequence have a specified order, but the elements of a set do not. For example, <span class="math inline">(a, b, c)</span> and <span class="math inline">(a, c, b)</span> are different sequences, but <span class="math inline">\{a, b, c\}</span> and <span class="math inline">\{a, c, b\}</span> are the same set.</p></li>
+            <li><p>Texts differ on notation for the empty sequence; we use <span class="math inline">\lambda</span> for the empty sequence; others use <span class="math inline">\epsilon</span>, <span class="math inline">\varepsilon</span>, or <span class="math inline">()</span>.</p></li>
+            </ul>
+            <p>Length two sequences are called <strong>pairs</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Length one sequences are commonly treated as being identical to their single term, with no special action needed to convert between a length-one sequence and a non-sequence value.</p>
+            <p>The product operation is one link between sets and sequences. A <strong>Cartesian product</strong> of sets, <span class="math inline">S_1 \times S_2 \times \cdots \times S_n</span>, is a new set consisting of all sequences where the first component is drawn from <span class="math inline">S_1</span>, the second from <span class="math inline">S_2</span>, and so forth. For example, <span class="math inline">\mathbb N \times \{a,b\}</span> is the set of all pairs whose first element is a nonnegative integer and whose second element is an <span class="math inline">a</span> or a <span class="math inline">b</span>:</p>
+            <p><span class="math display">\mathbb N \times \{a,b\} = \{(0,a), (0,b), (1,a), (1,b), (2,a), (2,b), \dots\}</span></p>
+            <p>A product of <span class="math inline">n</span> copies of a set <span class="math inline">S</span> is denoted <span class="math inline">S^n</span>. For example, <span class="math inline">\{0,1\}^3</span> is the set of all 3-bit sequences:</p>
+            <p><span class="math display">\{0,1\}^3 = \{(0,0,0), (0,0,1), (0,1,0), (0,1,1), (1,0,0), (1,0,1), (1,1,0), (1,1,1)\}</span></p>
+            <p>The special notation <span class="math inline">S^{*}</span> means the set <span class="math inline">\big\{x \;\big\|\; \exists n \in \mathbb N \;.\; x \in S^n \big\}</span>. The superscript asterisk is called a <strong>Kleene star</strong>.</p>
+            <p><span class="math display">\{0,1\}^{*} = \{\lambda, (0), (1), (0,0), (0,1), (1,0), (1,1), (0,0,0), (0,0,1), \dots\}</span></p>
+            <p>A <strong>symbol</strong> is a mathematical entity whose only meaning is its identity. Symbols are often written in a fixed-width font or as code; for example, 1 is a number and <code>1</code> is the symbol used to represent that number. A sequence of symbols is called a <strong>string</strong> and is often written without the parentheses and commas, sometimes between quotes and other times not. For example, the following all refer to the same string: (<code>1</code>, <code>1</code>, <code>0</code>), <code>110</code>, <q><code>110</code></q>.</p>
+            <h1 data-number="3" id="functions" data-number="3"><span class="header-section-number">3</span> Functions</h1>
+            <p>In addition to the material in MCS, the following is worth noting:</p>
+            <h2 data-number="3.1" id="addenda-to-4.3.1" data-number="3.1"><span class="header-section-number">3.1</span> Addenda to 4.3.1</h2>
+            <p>MCS defines functions as having a set as their domain, but then provides examples of multiple-argument functions. There are two common ways to handle multiple-argument functions:</p>
+            <dl>
+            <dt>A domain of sequences</dt>
+            <dd><p>If <span class="math inline">f(x,y)</span> is defined for <span class="math inline">x \in X</span> and <span class="math inline">y \in Y</span>, resulting in elements of <span class="math inline">Z</span>, then we say <span class="math inline">f : (X \times Y) \rightarrow Z</span>; and so on for longer argument lists.</p>
+            <p>Thus, 4.3.1’s function’s types are</p>
+            <p><span class="math display">f_1 : \mathbb R \rightarrow \mathbb R</span></p>
+            <p><span class="math display">f_2 : \mathbb (\{0,1\}^{*} \times \{0,1\}^{*}) \rightarrow \{0,1\}^{*}</span></p>
+            <p><span class="math display">f_3 : \mathbb (X \times \mathbb N) \rightarrow X^{*}</span></p>
+            <p><span class="math display">f_4 : \mathbb (\{\top,\bot\} \times \{\top,\bot\}) \rightarrow \{\top,\bot\}</span></p>
+            <p><span class="math display">f_5 : \mathbb \{0,1\}^{*} \rightarrow \mathbb N</span></p>
+            <p>(note: the domain of <span class="math inline">x</span> in <span class="math inline">f_3</span> is undefined in MCS).</p>
+            </dd>
+            <dt>A function that yields a function</dt>
+            <dd><!-- check: is this the Curry-Howard Isomorphism? -->
+            <p>A different way to handle multiple arguments is to evaluate them one at a time, with each partial evaluation resulting in a function with one fewer argument. Thus, if <span class="math inline">f(x,y)</span> is defined for <span class="math inline">x \in X</span> and <span class="math inline">y \in Y</span>, resulting in elements of <span class="math inline">Z</span>, then we say <span class="math inline">f : X \rightarrow (Y \rightarrow Z)</span> or (because the function-type arrow <span class="math inline">\rightarrow</span> is right-associative) simply <span class="math inline">f : X \rightarrow Y \rightarrow Z</span>; and so on for longer argument lists.</p>
+            <p>For example, consider the function <span class="math inline">f(x,y,z) = x + y - z</span>. We could then say that <span class="math inline">f(3)</span> is a new function defined by the formula <span class="math inline">3 + y - z</span>. <span class="math inline">f(3,4)</span> is shirt-hand for f(3)(4)$: that is, we evaluate <span class="math inline">f(3)</span> to get a function which we evaluate at <span class="math inline">y=4</span> to get <span class="math inline">7 - z</span>.</p>
+            <p>This seemingly convoluted representation is common in programming language research and present in the type system of some functional programming languages.</p>
+            <p>Thus, 4.3.1’s function’s types are</p>
+            <p><span class="math display">f_1 : \mathbb R \rightarrow \mathbb R</span></p>
+            <p><span class="math display">f_2 : \mathbb \{0,1\}^{*} \rightarrow \{0,1\}^{*} \rightarrow \{0,1\}^{*}</span></p>
+            <p><span class="math display">f_3 : X \rightarrow \mathbb N \rightarrow X^{*}</span></p>
+            <p><span class="math display">f_4 : \mathbb \{\top,\bot\} \rightarrow \{\top,\bot\} \rightarrow \{\top,\bot\}</span></p>
+            <p><span class="math display">f_5 : \mathbb \{0,1\}^{*} \rightarrow \mathbb N</span></p>
+            <p>(note: the domain of <span class="math inline">x</span> in <span class="math inline">f_3</span> is undefined in MCS).</p>
+            </dd>
+            </dl>
+            <p>Every function can be written as a (possibly infinite) set of pairs, where the first term of each pair is an element of the domain and the second term of each pair is an element of the codomain. For example, <span class="math inline">f_4</span> can be written as <span class="math inline">\Big\{ \big((\bot,\bot), \top\big), \big((\bot,\top), \top\big), \big((\top,\bot), \bot\big), \big((\top,\top), \top\big) \Big\}</span>.</p>
+            <h2 data-number="3.2" id="addenda-to-4.3.2" data-number="3.2"><span class="header-section-number">3.2</span> Addenda to 4.3.2</h2>
+            <p>For every set <span class="math inline">S</span> there is a special function <span class="math inline">f : S \rightarrow S</span> defined as <span class="math inline">f(x) = x</span> and called <strong>the identity function</strong> (the definite article <q>the</q> is a bit misleading, as there is one such identity function for each possible set). There is no single standard notation for the identity function.</p>
+            <p>If, for two functions <span class="math inline">f</span> and <span class="math inline">g</span>, both <span class="math inline">f \circ g</span> and <span class="math inline">g \circ f</span> are both identity functions, then we call <span class="math inline">f</span> and <span class="math inline">g</span> one another’s <strong>inverses</strong>. We often write the inverse of a function <span class="math inline">f</span> as <span class="math inline">f^{-1}</span>. Not all functions have inverses; those that do are called <q>invertible.</q></p>
+            <h1 data-number="4" id="binary-relations" data-number="4"><span class="header-section-number">4</span> Binary Relations</h1>
+            <p>MCS 4.4 is a bit confusing when it comes to the relationship between functions and relations. Here’s another take:</p>
+            <ul>
+            <li>Relations answer <q>yes/no</q> questions: <q>is 3 less than 2?</q>, <q>does Tychonievich love programming?</q> etc.</li>
+            <li>Functions answer <q>what is</q> questions: <q>what is the cube root of 2?</q>, <q>what is Tychonievich’s favorite poem?</q></li>
+            <li>Every function can be re-posed as a relation by guessing: <q>is the cube root of 2 1.4562?</q>, <q>is Tychonievich’s favorite poem <em>The Panther</em> by Ogden Nash?</q></li>
+            <li>A relation can only be re-posed as a function if there is a unique answer; <q>what is 3 less than?</q> and <q>what does Tychonievich love?</q> don’t have single answers.</li>
+            <li>If a relation can be re-posed as a function, we sometimes say the relation is a function.</li>
+            </ul>
+            <p>The names of most of the various properties of relations show up quite rarely and, when they do, you can generally look them up; but the underlying questions are worth understanding:</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">In the,</th>
+            <th>are there values related to</th>
+            <th style="text-align: left;">if so we call it</th>
+            <th style="text-align: left;">if not we call it</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;">domain</td>
+            <td>nothing?</td>
+            <td style="text-align: left;">partial</td>
+            <td style="text-align: left;">total</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">domain</td>
+            <td>multiple things?</td>
+            <td style="text-align: left;">non-functional</td>
+            <td style="text-align: left;">functional</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">codomain</td>
+            <td>nothing?</td>
+            <td style="text-align: left;">non-surjective</td>
+            <td style="text-align: left;">onto or surjective</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">codomain</td>
+            <td>multiple things?</td>
+            <td style="text-align: left;">non-injective</td>
+            <td style="text-align: left;">one-to-one or injective</td>
+            </tr>
+            </tbody>
+            </table>
+            <p><q>Partial</q> and <q>total</q> are usually only discussed in relation to functions. A total functional sujective injective relation is the same as a bijection, and is an invertable function.</p>
+            <p>The subset of these properties that apply to functions show up often enough that we’ll want you to memorize them: <strong>total</strong> vs <strong>partial</strong> are moderately important, and <strong>invertible</strong> is very important.</p>
+            <section class="footnotes" role="doc-endnotes">
+            <hr />
+            <ol>
+            <li id="fn1" role="doc-endnote"><p>Some texts call them <strong>ordered pairs</strong>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            </ol>
+            </section>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /> CC-BY-SA 3.0</a> license</a>. license.</p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

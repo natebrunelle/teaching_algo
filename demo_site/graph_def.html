@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Graph Definitions</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Graph Definitions</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div class="span12">
+            <style> table ul { margin: 0; } </style>
+            <p>You have enough to worry about memorizing without keeping all these terms in your head. We intend to provide this list for your reference during every in-class evaluation relating to graphs.</p>
+            <table>
+            <colgroup>
+            
+            
+            </colgroup>
+            <thead>
+            <tr class="header">
+            <th>Term</th>
+            <th>Definition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td>Walk</td>
+            <td><p>An alternating sequence of vertices and edges</p>
+            <ul>
+            <li>starting and ending with a vertex,</li>
+            <li>each edge <span class="math inline">(x,y)</span> in the walk follows vertex <span class="math inline">x</span> and is followed by vertex <span class="math inline">y</span></li>
+            </ul></td>
+            </tr>
+            <tr class="even">
+            <td>Path</td>
+            <td>A walk that does not visit any vertex twice</td>
+            </tr>
+            <tr class="odd">
+            <td>Closed Walk</td>
+            <td>A walk that begins and ends at the same vertex</td>
+            </tr>
+            <tr class="even">
+            <td>Cycle</td>
+            <td>A closed walk that is a path except for its last vertex</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>The related definitions on relations <span class="math inline">R : A \rightarrow A</span> are</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">Term</th>
+            <th style="text-align: left;">Definition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;">R is Reflexive</td>
+            <td style="text-align: left;"><span class="math inline">\forall x \in A \;.\; x</span> R <span class="math inline">x</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">R is Irreflexive</td>
+            <td style="text-align: left;"><span class="math inline">\forall x \in A \;.\; \lnot(x</span> R <span class="math inline">x)</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">R is Symmetric</td>
+            <td style="text-align: left;"><span class="math inline">\forall x,y \in A \;.\; (x</span> R <span class="math inline">y) \rightarrow (y</span> R <span class="math inline">x)</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">R is Asymmetric</td>
+            <td style="text-align: left;"><span class="math inline">\forall x,y \in A \;.\; (x</span> R <span class="math inline">y) \rightarrow \lnot(y</span> R <span class="math inline">x)</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">R is Antisymmetric</td>
+            <td style="text-align: left;"><span class="math inline">\forall x \neq y \in A \;.\; (x</span> R <span class="math inline">y) \rightarrow \lnot(y</span> R <span class="math inline">x)</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">R is Transitive</td>
+            <td style="text-align: left;"><span class="math inline">\forall x,y,z \in A \;.\; (x</span> R <span class="math inline">y) \land (y</span> R <span class="math inline">z) \rightarrow (x</span> R <span class="math inline">z)</span></td>
+            </tr>
+            </tbody>
+            </table>
+            <p>And those lead to these terms:</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">Term</th>
+            <th style="text-align: left;">Definition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;">Strict partial order</td>
+            <td style="text-align: left;">transitive and asymmetric</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">Weak partial order</td>
+            <td style="text-align: left;">transitive, reflexive, and antisymmetric</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">Equivalence relation</td>
+            <td style="text-align: left;">transitive, reflexive, and symmetric</td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

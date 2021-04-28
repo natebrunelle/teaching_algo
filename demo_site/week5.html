@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Week 5 Guide</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Week 5 Guide</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="structure.html">Course Structure</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+          <li><p class="navbar-text"><a href="weekly_guides.html">Weekly Guides</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#goals"><span class="toc-section-number">1</span> Goals</a></li>
+        <li><a href="#schedule"><span class="toc-section-number">2</span> Schedule</a></li>
+        <li><a href="#cohort-problems"><span class="toc-section-number">3</span> Cohort Problems</a></li>
+        <li><a href="#reading"><span class="toc-section-number">4</span> Reading</a></li>
+        <li><a href="#reading-1"><span class="toc-section-number">5</span> Reading</a></li>
+        <li><a href="#videos"><span class="toc-section-number">6</span> Videos</a></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+                  <!--<blockquote style="background-color:#fbb; font-size:150%">This page is currently under construction. Any content you see now is subject to change until the start of the coming semester. Expect some links to be broken.</blockquote>-->
+      <h1 data-number="1" id="goals" data-number="1"><span class="header-section-number">1</span> Goals</h1>
+      <p>The main goals for Week 5 are to:</p>
+      <ul>
+      <li>Understand what a complexity class is and how to provide properties about circuit-size complexity classes.</li>
+      <li>Learn the asymptotic operators (Big-<em>O</em>, Ω, and Θ) and how to use them correctly.</li>
+      <li>Be able to both intuitively understand what functions are in <em>O</em>(<em>f(<em>n</em>)</em>), and to prove membership or non-membership.</li>
+      <li>Be able to connect the formal definitions of computing costs to practical questions about the cost of computing.</li>
+      </ul>
+      <h1 data-number="2" id="schedule" data-number="2"><span class="header-section-number">2</span> Schedule</h1>
+      <table>
+      <colgroup>
+      
+      
+      
+      
+      
+      
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th style="text-align: center;">Day</th>
+      <th style="text-align: center;"><q>Tuesday</q> Cohort</th>
+      <th style="text-align: center;"><q>Wednesday</q> Cohort</th>
+      <th style="text-align: center;"><q>Thursday</q> Cohort</th>
+      <th style="text-align: center;"><q>Friday</q> Cohort</th>
+      <th style="text-align: center;"><q>Sunday</q> Cohort</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Thurs</strong> 04 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Break)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Fri</strong> 05 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Break)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Sat</strong> 06 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Break)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Sun</strong> 07 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Break)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Mon</strong> 08 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Break)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Tues</strong> 09 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Break)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Wed</strong> 10 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Break)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;">Revision</td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      <td style="text-align: center;">Preparation</td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Thurs</strong> 11 Mar</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 4)</font></td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      <td style="text-align: center;">Revision</td>
+      <td style="text-align: center;">Preparation</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Fri</strong> 12 Mar</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Sat</strong> 13 Mar</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      <td style="text-align: center;">Revision</td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Sun</strong> 14 Mar</td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      <td style="text-align: center;">Preparation</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Mon</strong> 15 Mar</td>
+      <td style="text-align: center;">Revision</td>
+      <td style="text-align: center;"><strong>Prep Cohort Meeting</strong></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Tues</strong> 16 Mar</td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      <td style="text-align: center;">Revision</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      </tr>
+      <tr class="even">
+      <td style="text-align: center;"><strong>Wed</strong> 17 Mar</td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      <td style="text-align: center;"><font color="red"><strong>Assessed Meeting</strong></font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      </tr>
+      <tr class="odd">
+      <td style="text-align: center;"><strong>Thurs</strong> 18 Mar</td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><strong>Writeup Due</strong></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      <td style="text-align: center;"><font color="lightgray">(Week 6)</font></td>
+      </tr>
+      </tbody>
+      </table>
+      <h1 data-number="3" id="cohort-problems" data-number="3"><span class="header-section-number">3</span> Cohort Problems</h1>
+      <p>These are the problems you should discuss in your Cohort Meeting, and everyone in your cohort should be prepared to present and discuss solutions to at the Assessed Cohort Meeting:</p>
+      <ul>
+      <li><a href="files/ps/week5_blank.pdf">Cohort Problems for Week 5 [PDF]</a></li>
+      <li><a href="files/ps/week5.zip">LaTeX Template for Week 5 [ZIP]</a></li>
+      </ul>
+      <p>The problems are posted here and we think its a good idea to look at them early, but you’re not expected to be able to solve them until after doing the readings and watching the videos below.</p>
+      <p>There is no programming problem this week.</p>
+      <h1 data-number="4" id="reading" data-number="4"><span class="header-section-number">4</span> Reading</h1>
+      <h1 data-number="5" id="reading-1" data-number="5"><span class="header-section-number">5</span> Reading</h1>
+      <p>This week focuses on material in <a href="docs/tcs-chapter5.pdf">Chapter 5: Code as data, data as code</a> from the TCS textbook (which you already read last week, but we go into more depth on this week). The main theorems we focus on are in <a href="https://introtcs.org/public/lec_04_code_and_data.html#countingcircuitsec">Section 5.2</a>.</p>
+      <p>The TCS book does not provide a detailed presentation of the asymptotic operators, but reviews them in <a href="https://introtcs.org/public/lec_00_1_math_background.html#secbigohnotation">Section 1.4.8</a>. Many books provide more detailed presentations of these concepts, and lots of examples. If you would like a more complex textbook explanation, the course instructors (at least one of them!) recommends this chapter: <a href="https://computingbook.org/Cost.pdf">Chapter 7: Cost</a> (from <a href="https://computingbook.org/"><em>Introduction to Computing Explorations in Language, Logic, and Machines</em></a>).</p>
+      <h1 data-number="6" id="videos" data-number="6"><span class="header-section-number">6</span> Videos</h1>
+      <p>You can play all the videos using this playlist, but don’t forget to take breaks: <a href="https://www.youtube.com/playlist?list=PLZ9Gk_8DtbmFH0b5mWFYcA5bOiNdkjCBQ">Week 5 Playlist</a></p>
+      <p>
+      Week 5 Intro (4:38)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/gk9Gt5Pbb1w' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Introducing Complexity (5:37)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/HOgP-99MFoU' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Introducing SIZE (5:59)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/SfS3nl9O190' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Our First Complexity Proof (11:38)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/SSXy7BbuZGM' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Asymptotic Operators (7:06)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/96XtkxDNDCs' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Understanding Asymptotics (10:40)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/KA8uSlGqc_o' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Big-Oh Examples (17:04)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/iG_BGStzPQE' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Using Big-O (4:52)(guest-stars David Evans)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/ZPVsL3mCxkg' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Common Misuses of Asymptotic Notation (5:52)(guest-stars David Evans)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/WLV99-6ep2c' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Some Functions Are Expensive (7:36)(guest-stars David Evans)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/BavLtSyKlFg' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+      <p>
+      Cost of Computing (5:03)(guest-stars David Evans)<br> <iframe width='800' height='450' src='https://www.youtube-nocookie.com/embed/5H6DvmEzwDY' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+      </p>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2021 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2021-03-03 18:22
+  </footer>
+</body>
+</html>

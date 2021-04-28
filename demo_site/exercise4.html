@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Exercise 4 Automata Tune</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Exercise 4 Automata Tune</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="structure.html">Course Structure</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+          <li><p class="navbar-text"><a href="weekly_guides.html">Weekly Guides</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+        <li><a href="#exercise-4-1-dfa-programming-problems"><span class="toc-section-number">2</span> Exercise 4-1: DFA Programming Problems</a>
+        <ul>
+        <li><a href="#deliverable"><span class="toc-section-number">2.1</span> Deliverable</a>
+        <ul>
+        <li><a href="#hamming-distance"><span class="toc-section-number">2.1.1</span> Hamming Distance</a></li>
+        </ul></li>
+        </ul></li>
+        <li><a href="#exercises-4-2-through-4-5-written-problems."><span class="toc-section-number">3</span> Exercises 4-2 through 4-5 Written problems.</a>
+        <ul>
+        <li><a href="#deliverable-1"><span class="toc-section-number">3.1</span> Deliverable</a></li>
+        </ul></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+                  <blockquote style="background-color:#fbb; font-size:150%">This page is currently under construction. Any content you see now is subject to change until the start of the coming semester. Expect some links to be broken.</blockquote>
+      <h1 data-number="1" id="introduction" data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+      <p>The purpose of this assignment is to finite state automata as a model of computing. To start with, you will be implementing several computations as Deterministic Finite State Automata (DFAs) and others as Non-Deterministic Finite State Automata (NFAs). You’ll also be asked to prove some things about finite automata.</p>
+      <p>As an aside, these finite automata may seem to be the least <q>real</q> of the models of computing so far. However, as we will see, they’re actually incredibly useful. Finite state automata are routinely used for a wide variety of applications:</p>
+      <ul>
+      <li>String matching (how similar are two strings?), including <a href="https://en.wikipedia.org/wiki/Hamming_distance">Hamming distance</a> and <a href="https://en.wikipedia.org/wiki/Edit_distance">Edit distance</a>. These metrics are both used extensively for reconstructing genomes when doing genetic sequencing.</li>
+      <li>Virus scanning, most notably <a href="https://en.wikipedia.org/wiki/Clam_AntiVirus">ClamAV</a> and <a href="https://en.wikipedia.org/wiki/Snort_(software)">Snort</a>.</li>
+      <li><a href="https://www.cs.virginia.edu/~tjt7a/docs/accelerating-random-forests.pdf">Decision-Tree models for Machine Learning</a></li>
+      <li>Formal software verification using <a href="https://www.cs.rice.edu/~vardi/papers/ijcai13.pdf">Linear Temporal Logic</a></li>
+      <li>Psuedo-random number generation <a href="https://patents.google.com/patent/US9977652">shameless plug</a></li>
+      </ul>
+      <p>This assignment will also help you to get acquainted with closure and with regular expressions. As an aside, here is a regular-expressions-motivated reason that we prefer the way we represent natural numbers be onto: <a href="https://www.youtube.com/watch?v=M3x5Z3iIoSU&amp;fbclid=IwAR0DZeaS_P5GyEBUkNUNJotDExLelFOBFCx5NQSS2nORjfnfng6_B-XwTo8">Regexes for Roman Numberals</a>.</p>
+      <h1 data-number="2" id="exercise-4-1-dfa-programming-problems" data-number="2"><span class="header-section-number">2</span> Exercise 4-1: DFA Programming Problems</h1>
+      <p>The programming problems for this assignment will guide you through implementing the EVAL function discussed in class. Will will be building up the subroutines we will need. Use the psuedocode presented in class or in the textbook to guide you through it.</p>
+      <h2 data-number="2.1" id="deliverable" data-number="2.1"><span class="header-section-number">2.1</span> Deliverable</h2>
+      <p>Before you begin on this assignment, you will need to download two (or three) files, depending on your programming language of choice:</p>
+      <ul>
+      <li>Java: <a href="files/exercises/exercise4_java/DFA.java">DFA.java</a>, <a href="files/exercises/exercise4_java/Tuple.java">Tuple.java</a> and <a href="files/exercises/exercise4_java/SeveralDFAs.java">SeveralDFAs.java</a>.</li>
+      <li>Python: <a href="files/exercises/exercise4_python/DFA.py">DFA.py</a>, and <a href="files/exercises/exercise4_python/several_dfas.py">several_dfas.py</a></li>
+      </ul>
+      <p>(<strong>If you’re using java, do not add a package declaration to your program.</strong>)</p>
+      <p>The programming problems for this assignment work a little differently from what we’ve done in the previous assignments. For this one, there is not a guided exploration of the course materials with asserts and such. For this exercise you will be simply implementing three functions. The functions you are implementing are in the <code>several dfas</code> files, and only submit your <code>several dfas</code> file. You should not make any edits to the <code>DFA</code> file, and you will not submit it.</p>
+      <p>Inside <code>several dfas</code> there are 3 functions you must implement (each marked with TODO). These three functions don’t do anything other than create and return a finite state automaton for a particular language. You’ll see that in each I begin by providing you and example of how to implement an automaton by giving an implementation of infinte XOR and AND. In both the python and java code, to create a DFA you must define the 5 components we discussed in class:</p>
+      <ul>
+      <li>State set</li>
+      <li>alphabet set</li>
+      <li>starting state</li>
+      <li>set of final states</li>
+      <li>transition function</li>
+      </ul>
+      <p>The state set is a set of strings, the alphabet is a set of characters, the starting state is a string (that should be in your state set as well), the set of final states is a set of string (and should be a subset of the state set), and the transition function is a map/dictionary (it maps state-character tuples to states). The java code has 3 files because it has an impelemention of tuples to encapsulate the state-character pairs.</p>
+      <p>After you create an automaton, you will need to test and debug it on your own. I have given you some pretty powerful tools to be able to do this. If you have a DFA in your program called <code>dfa</code>:</p>
+      <ul>
+      <li>You can convert an automaton to a string describing it using <code>dfa.toString()</code> in Java, or <code>str(dfa)</code> in python. This will display to you everything you might want to know about the automaton (currently active state, start state, transitions, final states, etc.)</li>
+      <li>You can use <code>dfa.step(character)</code> to transition on a single character. Its return value is a boolean representing whether or not the new state is a final state. You can use <code>dfa.active</code> to get its current state.</li>
+      <li>You can use <code>dfa.execute(string)</code> to run the machine on a given input string, its return value is a boolean representing whether or not the state that it ends in is a final state.</li>
+      <li>You can visualize the automaton by invoking the <code>dfa.toDot()</code>. This method will print out a description of the automaton in the dot file format, which you can then convert into an image using an <a href="https://dreampuf.github.io/GraphvizOnline/">online tool</a>. To see your automaton, invoke <code>dfa.toDot()</code> and then copy-paste the printed text into that tool.</li>
+      </ul>
+      <h3 data-number="2.1.1" id="hamming-distance" data-number="2.1.1"><span class="header-section-number">2.1.1</span> Hamming Distance</h3>
+      <p>I believe that the first two machines you’re asked to implement are more self-explanatory, but the third (Hamming distance) is a bit trickier.</p>
+      <p>First of all, the Hamming Distance between strings x and y is the minimum number of substitutions needed to convert the string x into the string y. For example, if x is the string <q>nate</q>, then we would have the following Hamming Distance when comparing to different choices for y:</p>
+      <ul>
+      <li>y = <q>nate</q> has Hamming distance 0 (they’re the same string, no subtitutions required)</li>
+      <li>y = <q>hate</q> has Hamming distance 1 (substitute an <q>h</q> for an <q>n</q>)</li>
+      <li>y = <q>note</q> has Hamming distance 1 (substitute an <q>o</q> for an <q>a</q>)</li>
+      <li>y = <q>hath</q> has Hamming distance 2 (substitute an <q>h</q> for an <q>n</q> and an <q>h</q> for an <q>e</q>)</li>
+      <li>y = <q>moth</q> has Hamming distance 3 (substitution an <q>m</q> for an <q>n</q>, an <q>o</q> for an <q>a</q>, and an <q>h</q> for an <q>e</q>)</li>
+      <li>y = <q>rich</q> has Hamming distance 4</li>
+      <li>y = <q>naters</q> has Hamming distance infinity (we cannot convert <q>nate</q> to <q>naters</q> through subtitutions alone)</li>
+      </ul>
+      <p>For this function, you’ll need to create a different machine depending on the arguments given to that function. The arguments given are the string we’re matching against, and the distance we would like to see. If we give the function the arguments <q>nate</q> and 2, then the automaton should return 1 for <q>nate</q>, <q>hate</q>, <q>note</q>, <q>hath</q> (of those above), and return 0 for the rest.</p>
+      <p>Essentially, the string and distance will be <q>hard-coded</q> into the automaton when you make it. The general idea for how this works is to have an automaton with states arranged in a grid. The column of a state represents how many characters of the string you’ve read so far, so the number of columns is equal to the length of the parameter string plus 1 (one column for each value 0-length). You advance one column every transition. The row of a state represents the total amount of distance <q>accumulated</q> thus far, so the number of rows is equal to the allowable distance plus a (one row for each value 0-distance). Every time the input string has a character which does not match that of the parameter string you move up one row.</p>
+      <p>The image below shows an example of invoking the function with the string <q>aaaa</q> and the distance 2.</p>
+      <p><img src=files/images/hamming.png height="500" ></p>
+      <h1 data-number="3" id="exercises-4-2-through-4-5-written-problems." data-number="3"><span class="header-section-number">3</span> Exercises 4-2 through 4-5 Written problems.</h1>
+      <p>Answer each of the problems contained in <a href="files/exercises/exercise4.pdf">this pdf</a> with an accompanying proof.</p>
+      <p>To begin, download <a href="files/exercises/exercise4.zip">exercise4.zip</a> and upload as a new project in overleaf. Within that zip you will see 6 tex files. the <code>exercise4.tex</code> file contains the code which generates the pdf. You will provide your answers in the <code>exercise4-2.tex</code>, <code>exercise4-3.tex</code>, <code>exercise4-4.tex</code>, and <code>exercise4-5.tex</code> files.</p>
+      <p>First, change <code>\submitter{TODO: your name}</code> in <code>exercise4.tex</code> to contain your name and UVA email id (e.g. <code>\submitter{Grace Hopper (gmh1a)}</code>)</p>
+      <p>Next, cite all your sources in <code>\collaborators{TODO: replace ...}</code> according to the <a href="https://www.cs.virginia.edu/~njb2b/cstheory/s2020/syllabus.html#no-plagiarism-nor-anything-like-it">course policy</a></p>
+      <p>At this point, fill in all of your solutions in the proper tex file. When you rebuild the pdf, your solutions should appear as you write them.</p>
+      <h2 data-number="3.1" id="deliverable-1" data-number="3.1"><span class="header-section-number">3.1</span> Deliverable</h2>
+      <p>You will need to submit a separate pdf for each of the exercises 4-2, 4-3, 4-4, and 4-5. We do this for a few reasons: we can release individual problems’ grades as they’re graded rather than waiting for the whole problem set to be graded, we can adjust deadlines for individual problems if necessary, if you need extra time on one problem then you can submit just that one late instead of receiving a late penalty on all problems, etc. We have made it easy for you to get these separate pdfs, however.</p>
+      <p>At the very top of <code>exercise4.tex</code> there is a line which reads <code>\usepackage{uvatoc}</code>. That line tells LaTeX include everything in the pdf. To include only one problem, comment that line out and uncomment (one at a time) <code>\usepackage[response2]{uvatoc}</code>, <code>\usepackage[response3]{uvatoc}</code>, <code>\usepackage[response4]{uvatoc}</code>, <code>\usepackage[response5]{uvatoc}</code> and <code>\usepackage[response6]{uvatoc}</code> to build a pdf with only exercise 4-2, 4-3, 4-4, and 4-5 respectively.</p>
+      <p>Rename the pdf files for the appropriate exercise, and submit to the <a href="https://kytos.cs.virginia.edu/cstheory">assignments page</a>.</p>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2021 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2021-01-21 16:56
+  </footer>
+</body>
+</html>

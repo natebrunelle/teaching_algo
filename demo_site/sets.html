@@ -1,0 +1,561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Sets</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Sets</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#defining-sets"><span class="toc-section-number">1</span> Defining Sets</a></li>
+        <li><a href="#set-operations-and-notation"><span class="toc-section-number">2</span> Set operations and notation</a>
+        <ul>
+        <li><a href="#membership"><span class="toc-section-number">2.1</span> Membership</a></li>
+        <li><a href="#sub--and-super-sets"><span class="toc-section-number">2.2</span> Sub- and super-sets</a></li>
+        <li><a href="#sets-from-other-sets"><span class="toc-section-number">2.3</span> Sets from other sets</a></li>
+        <li><a href="#counting-members"><span class="toc-section-number">2.4</span> Counting Members</a></li>
+        <li><a href="#set-builder-notation"><span class="toc-section-number">2.5</span> Set-builder notation</a></li>
+        <li><a href="#common-sets"><span class="toc-section-number">2.6</span> Common sets</a></li>
+        </ul></li>
+        <li><a href="#quantifiers-and-sets"><span class="toc-section-number">3</span> Quantifiers and Sets</a>
+        <ul>
+        <li><a href="#core-notation"><span class="toc-section-number">3.1</span> Core notation</a></li>
+        <li><a href="#converting-forall-x-in-s.-cdots-to-forall-x.-cdots"><span class="toc-section-number">3.2</span> Converting <q><span class="math inline">\forall x \in S\;.\; \cdots</span></q> to <q><span class="math inline">\forall x\;.\; \cdots</span></q></a></li>
+        <li><a href="#converting-forall-x.-cdots-to-forall-x-in-s.-cdots"><span class="toc-section-number">3.3</span> Converting <q><span class="math inline">\forall x\;.\; \cdots</span></q> to <q><span class="math inline">\forall x \in S\;.\; \cdots</span></q></a></li>
+        </ul></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+            <div class="aside long">
+            <p>The first clause of §4 is <q>We have assumed that you’ve already been introduced to the concepts of sets…</q>. The authors of that text may have assumed that, but I do not. This text is intended to fill in that gap.</p>
+            <p>Part of the reason this write-up exists is that sets are traditionally the domain of algebra, not discrete math; but the subset of algebra that is taught in secondary school and called <q>algebra</q> (as opposed to what is taught in university and called <q>algebra</q>) often omits sets. Some of you had a broad algebra experience and already know sets, but many of you did not.</p>
+
+            </div>
+            <h1 data-number="1" id="defining-sets" data-number="1"><span class="header-section-number">1</span> Defining Sets</h1>
+            <p>Let’s build up a definition of set one step at a time. I’ll do this informally with an emphasis on ease of understanding instead of formally with an emphasis on precision; if you want a precise definition instead, see §7.3.2.</p>
+            <ol type="1">
+            <li><p><strong>A set contains members.</strong></p>
+            <p><strong>Set</strong> is thus a term referring to a collection, kind of like a list in programming. <strong>Member</strong> is the mathematician’s word for something inside a set; in programming, we more commonly call them <em>elements</em> instead.</p>
+            <p>There is no constraint on the type of the members of set.</p></li>
+            <li><p><strong>We write a set with curly braces and commas.</strong></p>
+            <p>For example, {1, 3} is a set. So is {dog, cat, mouse}.</p>
+            <p>Arguably, {<code>x?y:z</code>, satisfaction, 2102, 🐉} is also a set, but sets whose members do not have some defined type are so uncommon some would say they are not actually sets.</p></li>
+            <li><p><strong>A member of a set has no other set-related properties besides membership in the set: not order or position in the set, not number of copies in the set, etc.</strong></p>
+            <p>Thus, {1, 2} and {2, 1} are two ways of writing the same set.</p>
+            <p>Also, {1, 2, 2} is nonsensical: {1, 2} already told us that the set had both 1 and 2 inside it; adding another 2 doesn’t make any sense, any more than it makes sense to say <q>I’m a student and a logician and a logician.</q> We might <em>guess</em> that they were being sloppy about sets and meant {1, 2}, but perhaps they made a typo and meant {1, 2, 3} instead? We simply can’t tell.</p></li>
+            <li><p><strong>The only property of a set is its members.</strong></p>
+            <p>Once you’ve written {1, 2}, you’ve written all there is to know about that set. This implies that we can talk about every {1, 2} as referring to the same set, even if we write it as {2, 1} or <q>the set containing 1 and 2</q> instead.</p>
+            <p>Note that this observation is also true of numbers: once you’ve written 7, you’ve written all there is to know about it. We can talk about every 7 as referring to the same number, even if we write it as Ⅶ or <q>seven</q> instead.</p>
+            <p>Note that we will define other properties which are derived from its members, such as <em>cardinality</em> (the number of members it has).</p></li>
+            <li><p><strong>A set can be empty. Both {} and <span class="math inline">\emptyset</span> represent the empty set.</strong></p>
+            <p>Because a set’s only property is its members, it is usual to speak of <em>the</em> empty set, not <em>an</em> empty set.</p></li>
+            <li><p><strong>A set can be infinite.</strong></p>
+            <p>The set of integers is infinite. So is the set of even positive integers. So is the set of numbers which, when written in base 10, only contain the digit 2. So is the set of responses you could give to the question <q>how are you?</q>. So is the set of examples I could add to this paragraph.</p></li>
+            <li><p><strong>A set can have sets as members.</strong></p>
+            <p>{1} is a set; so is {{1}, {}, {84, 5}}; so is {1, {1, {}}, {{1}}, {{{2, {3}}}}}; so is the set of all two-element sets.</p>
+            <p>Note that having sets inside other sets does not change any of the other rules. Thus {{1,2}, {2,1}} is nonsensical for the same reason {2, 2} is nonsensical: we wrote it as if it made sense to say the same value was a member of the set twice.</p></li>
+            </ol>
+            <h1 data-number="2" id="set-operations-and-notation" data-number="2"><span class="header-section-number">2</span> Set operations and notation</h1>
+            <h2 data-number="2.1" id="membership" data-number="2.1"><span class="header-section-number">2.1</span> Membership</h2>
+            <dl>
+            <dt><span class="math inline">m \in S</span> is defined to mean <q><span class="math inline">m</span> is a member of <span class="math inline">S</span></q></dt>
+            <dd><p>Note that <span class="math inline">m \in S</span> is a predicate: <span class="math inline">1 \in \{1,2,3\}</span> is <span class="math inline">\top</span> and <span class="math inline">1 \in \{2,4,6\}</span> is <span class="math inline">\bot</span>.</p>
+            <p>A nuance of English I have observed, but have no formal definition to back up, is that while we usually speak of the <em>members</em> of a set, we usually read ∈ as <q><em>element</em> of</q>, not <q><em>member</em> of</q>. In most cases, if you use the wrong one of <q>member</q> or <q>element</q> people will understand you without difficulty.</p>
+            <p>Set membership is ubiquitous in computing’s use of sets.</p>
+            </dd>
+            <dt><span class="math inline">m \notin S</span> is defined to mean <span class="math inline">\lnot(m \in S)</span></dt>
+            <dd>You’ll also rarely see ∋ and ∌, which mean the same thing as ∈ and ∉ but with the set on the left and the member on the right instead of the other way around.
+            </dd>
+            </dl>
+            <p>Checking for membership in sets is a very common component of discrete mathematics as it is used by computer scientists.</p>
+            <h2 data-number="2.2" id="sub--and-super-sets" data-number="2.2"><span class="header-section-number">2.2</span> Sub- and super-sets</h2>
+            <dl>
+            <dt><span class="math inline">A \subseteq B</span> is defined to mean <span class="math inline">\forall x. ((x \in A) \rightarrow (x \in B))</span>"</dt>
+            <dd><p>The <span class="math inline">\subseteq</span> symbol is pronounced <q>is a subset of</q>. It intentionally looks somewhat like the symbol <span class="math inline">\leq</span> because if <span class="math inline">A \subseteq B</span> then <span class="math inline">A</span> is <q>less than or equal to</q> <span class="math inline">B</span> in the sense that everything <span class="math inline">A</span> has, <span class="math inline">B</span> has too, and <span class="math inline">B</span> may have more.</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span class="math inline">\top</span></th>
+            <th style="text-align: center;"><span class="math inline">\bot</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">{} ⊆ {1, 2}</td>
+            <td style="text-align: center;">{1, 2} ⊆ {2, 3}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1} ⊆ {1, 2}</td>
+            <td style="text-align: center;">{1, 2} ⊆ {1}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">{1, 2} ⊆ {1, 2}</td>
+            <td style="text-align: center;"> </td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2} ⊆ the integers</td>
+            <td style="text-align: center;">{1, 2.3} ⊆ the integers</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Subsets are very common in computing’s use of sets.</p>
+            </dd>
+            <dt><span class="math inline">A \subset B</span> is defined to mean <span class="math inline">(A \subseteq B) \land (A \neq B)</span></dt>
+            <dd><p>The <span class="math inline">\subset</span> symbol is pronounced <q>is a proper subset of</q>.</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span class="math inline">\top</span></th>
+            <th style="text-align: center;"><span class="math inline">\bot</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">{} ⊂ {1, 2}</td>
+            <td style="text-align: center;">{1} ⊂ {2, 3}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1} ⊂ {1, 2}</td>
+            <td style="text-align: center;">{1, 2} ⊂ {1}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"> </td>
+            <td style="text-align: center;">{1, 2} ⊂ {1, 2}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2} ⊂ the integers</td>
+            <td style="text-align: center;">{1, 2.3} ⊂ the integers</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Proper subsets are not very common in computing’s use of sets.</p>
+            <p>There exists an alternative vocabulary, where <q>⊂</q> is pronounced <q>subset</q> and <q>⊆</q> is pronounced <q>subset or equal</q>. I have found that vocabulary to be uncommon and will not use it this semester.</p>
+            </dd>
+            <dt><span class="math inline">A \supseteq B</span> means <span class="math inline">B \subseteq A</span>; <span class="math inline">A \supset B</span> means <span class="math inline">B \subset A</span></dt>
+            <dd><p>The <span class="math inline">\supseteq</span> symbol is pronounced <q>is a superset of</q>. The <span class="math inline">\supset</span> symbol is pronounced <q>is a proper superset of</q>.</p>
+            <p>Supersets are very common in computing’s use of sets.</p>
+            </dd>
+            </dl>
+            <p>Checking for subsets is not used directly very often, but is often used to define other properties and putative theorems. One of the most famous unproven theorems of all, often phrased <q><strong>P</strong> = <strong>NP</strong></q><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, is not really interested in non-equality; what we hope to prove (or disprove) is <strong>P</strong> ⊂ <strong>NP</strong>, but so far the only proof we have is <strong>P</strong> ⊆ <strong>NP</strong>. The remaining piece of the proof is thus <strong>P</strong> ≠ <strong>NP</strong>.</p>
+            <h2 data-number="2.3" id="sets-from-other-sets" data-number="2.3"><span class="header-section-number">2.3</span> Sets from other sets</h2>
+            <dl>
+            <dt><span class="math inline">A \cup B</span> is defined to mean <q>a set <span class="math inline">S</span> such that <span class="math inline">\forall x. (x \in S \leftrightarrow ((x \in A) \lor (x \in B)))</span></q></dt>
+            <dd><p>The <span class="math inline">\cup</span> symbol is pronounced <q>union</q>, and <span class="math inline">A \cup B</span> is called <q>the union of <span class="math inline">A</span> and <span class="math inline">B</span></q>. It intentionally looks similar to <span class="math inline">\lor</span> to suggest a value is a member of the union of <span class="math inline">A</span> and <span class="math inline">B</span> if it is a member of <span class="math inline">A</span> <em>or</em> a member of <span class="math inline">B</span>.</p>
+            <p>Note that <span class="math inline">(A \subseteq B) \leftrightarrow ((A \cup B) = B)</span>.</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span class="math inline">A</span></th>
+            <th style="text-align: center;"><span class="math inline">B</span></th>
+            <th style="text-align: center;"><span class="math inline">A \cup B</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{1, 2}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{}</td>
+            <td style="text-align: center;">{1, 2}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{5, 6}</td>
+            <td style="text-align: center;">{1, 2, 5, 6}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2, 4, 8}</td>
+            <td style="text-align: center;">{2, 4, 6, 8}</td>
+            <td style="text-align: center;">{1, 2, 4, 6, 8}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">the positive numbers</td>
+            <td style="text-align: center;">{0}</td>
+            <td style="text-align: center;">the non-negative numbers</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">the even integers</td>
+            <td style="text-align: center;">the odd integers</td>
+            <td style="text-align: center;">the integers</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">UVA students</td>
+            <td style="text-align: center;">UVA employees</td>
+            <td style="text-align: center;">UVA denizens</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Union is common in computing’s use of sets.</p>
+            </dd>
+            <dt><span class="math inline">A \cap B</span> is defined to mean <q>a set <span class="math inline">S</span> such that <span class="math inline">\forall x. (x \in S \leftrightarrow ((x \in A) \land (x \in B)))</span></q></dt>
+            <dd><p>The <span class="math inline">\cap</span> symbol is pronounced <q>intersection</q>, and <span class="math inline">A \cap B</span> is called <q>the intersection of <span class="math inline">A</span> and <span class="math inline">B</span></q>. It intentionally looks similar to <span class="math inline">\land</span> to suggest a value is a member of the intersection of <span class="math inline">A</span> and <span class="math inline">B</span> if it is a member of <span class="math inline">A</span> <em>and</em> a member of <span class="math inline">B</span>.</p>
+            <p>Note that <span class="math inline">(A \subseteq B) \leftrightarrow ((A \cap B) = A)</span>.</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span class="math inline">A</span></th>
+            <th style="text-align: center;"><span class="math inline">B</span></th>
+            <th style="text-align: center;"><span class="math inline">A \cap B</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{1, 2}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{}</td>
+            <td style="text-align: center;">{}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{5, 6}</td>
+            <td style="text-align: center;">{}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2, 4, 8}</td>
+            <td style="text-align: center;">{2, 4, 6, 8}</td>
+            <td style="text-align: center;">{2, 4, 8}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">the positive numbers</td>
+            <td style="text-align: center;">the integers</td>
+            <td style="text-align: center;">the positive integers</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">beach paraphernalia</td>
+            <td style="text-align: center;">towels</td>
+            <td style="text-align: center;">beach towels</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>If <span class="math inline">A \cap B = {}</span>, we say that <span class="math inline">A</span> and <span class="math inline">B</span> are <strong>disjoint</strong>. Less commonly, <strong>overlap</strong> is used to mean <q>are not disjoint</q>.</p>
+            <p>Intersection is common in computing’s use of sets.</p>
+            </dd>
+            <dt><span class="math inline">A \setminus B</span> is defined to mean <q>a set <span class="math inline">S</span> such that <span class="math inline">\forall x. (x \in S \leftrightarrow ((x \in A) \land (x \notin B)))</span></q></dt>
+            <dd><p>The <span class="math inline">\setminus</span> symbol is pronounced either <q>minus</q> or <q>set minus</q>. <span class="math inline">A \setminus B</span> has everything that <span class="math inline">A</span> has provided <span class="math inline">B</span> does not have it. It is rarely used in computing, but does show up from time to time. I have no idea how they picked a symbol that looks like backwards division.</p>
+            <p>Note that <span class="math inline">(A \subseteq B) \leftrightarrow ((A \setminus B) = \emptyset)</span>.</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span class="math inline">A</span></th>
+            <th style="text-align: center;"><span class="math inline">B</span></th>
+            <th style="text-align: center;"><span class="math inline">A \setminus B</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{}</td>
+            <td style="text-align: center;">{1, 2}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">{5, 6}</td>
+            <td style="text-align: center;">{1, 2}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2, 4, 8}</td>
+            <td style="text-align: center;">{2, 4, 6, 8}</td>
+            <td style="text-align: center;">{1}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">the integers</td>
+            <td style="text-align: center;">the positive numbers</td>
+            <td style="text-align: center;">the negative integers</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">UVA denizens</td>
+            <td style="text-align: center;">UVA students</td>
+            <td style="text-align: center;">UVA employees</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Set minus is relatively uncommon in computing’s use of sets.</p>
+            </dd>
+            <dt>pow<span class="math inline">(A)</span> or <span class="math inline">\mathcal{P}(A)</span> is defined to mean <q>a set <span class="math inline">S</span> such that <span class="math inline">\forall x. (x \in S \leftrightarrow (x \subseteq A))</span></q></dt>
+            <dd><p>pow<span class="math inline">(A)</span> or <span class="math inline">\mathcal{P}(A)</span> (the two are used interchangeably, though any given text will use only one of the two) is called <q>the power set of <span class="math inline">A</span></q> and is the set of all subsets of <span class="math inline">A</span>.</p>
+            <p>Note that every set (even {}) has at least one subset: {}; thus a power set is <em>never</em> empty, <span class="math inline">\emptyset \in \mathcal{P}(A)</span> is a tautology, and <span class="math inline">\emptyset = \mathcal{P}(A)</span> is a contradiction regardless of what set <span class="math inline">A</span> is.</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span class="math inline">A</span></th>
+            <th style="text-align: left;"><span class="math inline">\mathcal{P}(B)</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">{}</td>
+            <td style="text-align: left;">{{}}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1}</td>
+            <td style="text-align: left;">{{}, {1}}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: left;">{{}, {1}, {2}, {1, 2}}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2, 3}</td>
+            <td style="text-align: left;">{{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">{{1, 2}, 3}</td>
+            <td style="text-align: left;">{{}, {{1, 2}}, {3}, {{1, 2}, 3}}</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{{}}</td>
+            <td style="text-align: left;">{{}, {{}}}</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Power sets are uncommon in computing’s use of sets.</p>
+            </dd>
+            </dl>
+            <p>Note that there is no set-notation syntax for common programming tasks like adding an element to a set or removing it from a set, nor is there a union-parallel for <span class="math inline">\oplus</span>. If you need to approximate these actions, use</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">Concept</th>
+            <th style="text-align: left;">Set notation</th>
+            <th style="text-align: left;">actually</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;"><q>add</q> <span class="math inline">x</span> to <span class="math inline">S</span></td>
+            <td style="text-align: left;"><span class="math inline">S \cup {x}</span></td>
+            <td style="text-align: left;">a set like <span class="math inline">S</span> except it also has <span class="math inline">x</span> in it</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><q>remove</q> <span class="math inline">x</span> to <span class="math inline">S</span></td>
+            <td style="text-align: left;"><span class="math inline">S \setminus {x}</span></td>
+            <td style="text-align: left;">a set like <span class="math inline">S</span> except it does not have <span class="math inline">x</span> in it</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">A</span> <q>xor</q> <span class="math inline">B</span></td>
+            <td style="text-align: left;"><span class="math inline">(A \cup B) \setminus (A \cap B)</span></td>
+            <td style="text-align: left;">a set with elements in <span class="math inline">A</span> or <span class="math inline">B</span> but not both</td>
+            </tr>
+            </tbody>
+            </table>
+            <h2 data-number="2.4" id="counting-members" data-number="2.4"><span class="header-section-number">2.4</span> Counting Members</h2>
+            <dl>
+            <dt><span class="math inline">|A|</span> means "the number of distinct values that are members of <span class="math inline">A</span></dt>
+            <dd><p>We call this notion <strong>cardinality</strong> and read <span class="math inline">|A|</span> as <q>the cardinality of <span class="math inline">A</span></q>.</p>
+            <p>Cardinality is related to, but distinct from, the idea of the length of a list: the list <code>[3, 1, 4, 1]</code> has length 4 but only 3 distinct elements, so the set of its elements is {1, 3, 4} and has cardinality 3.</p>
+            <p>Cardinality is always either a natural number (that is, a non-negative integer) or infinite. There are actually more than one kind of infinite that cardinality can be, but we won’t get into that in this writeup.</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"><span class="math inline">A</span></th>
+            <th style="text-align: center;"><span class="math inline">|A|</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">{}</td>
+            <td style="text-align: center;">0</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, 2}</td>
+            <td style="text-align: center;">2</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">{{1, 2}}</td>
+            <td style="text-align: center;">1</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">{1, {2, 3}}</td>
+            <td style="text-align: center;">2</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">the two-digit numbers</td>
+            <td style="text-align: center;">90</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">the integers</td>
+            <td style="text-align: center;"><span class="math inline">\infty</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">\mathcal{P}</span>({1, 3, 5, 7})</td>
+            <td style="text-align: center;">16</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span class="math inline">\mathcal{P}(A)</span></td>
+            <td style="text-align: center;"><span class="math inline">2^{|A|}</span></td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Cardinality is commonly used in theoretical computer science, but rare elsewhere in computing.</p>
+            </dd>
+            </dl>
+            <h2 data-number="2.5" id="set-builder-notation" data-number="2.5"><span class="header-section-number">2.5</span> Set-builder notation</h2>
+            <p>See §4.1.4. We’ll use this a lot.</p>
+            <div class="aside long">
+            <p>Python (alone among the languages I use regularly) has a variation of set-builder notation. For example, the set-builder notation <span class="math inline">\{x \in \mathbb{Z} \;|\; x^3-30x+1&gt;0\}</span> would be written <code class="sourceCode python">{x <span class="cf">for</span> x <span class="kw">in</span> Z <span class="cf">if</span> x<span class="op">**</span><span class="dv">3-30</span><span class="op">*</span>x<span class="op">+</span><span class="dv">1</span> <span class="op">&gt;</span> <span class="dv">0</span>}</code>, though you’d have to define a sensible, finite <code>Z</code> first (perhaps <code class="sourceCode python"><span class="bu">range</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">11</span>)</code>). It also allows computation after the selection, such as <code class="sourceCode python">[x<span class="op">**</span><span class="dv">3</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">15</span>) <span class="cf">if</span> (x<span class="op">**</span><span class="fl">0.5</span>)<span class="op">%</span><span class="dv">1</span> <span class="op">==</span> <span class="dv">0</span>]</code> as a list of cubes of perfect squares less than 15.</p>
+
+            </div>
+            <h2 data-number="2.6" id="common-sets" data-number="2.6"><span class="header-section-number">2.6</span> Common sets</h2>
+            <p>There are some sets that are so common they have their own special symbol. §4.1.1 has a reasonable list of these.</p>
+            <p>Note that even in handwriting, you have to double at least one of the mostly-vertical lines for people to know you mean the set; <q>Z</q> is not the set of integers, <q>ℤ</q> is. The official word for this orthography is <q>double-struck</q> as in <q>ℝ is a double-struck R,</q> but you can probably make it through your entire life in computing (including this class) without ever needing to know that word.</p>
+            <h1 data-number="3" id="quantifiers-and-sets" data-number="3"><span class="header-section-number">3</span> Quantifiers and Sets</h1>
+            <p>Quantifiers are often used with sets. Set-notation quantifiers and domain-bound quantifiers can each be defined in terms of the other. Note that one of our textbooks uses only domain-bound quantifiers and the other only set-notation quantifiers.</p>
+            <h2 data-number="3.1" id="core-notation" data-number="3.1"><span class="header-section-number">3.1</span> Core notation</h2>
+            <p>The notation <q><span class="math inline">\forall x \in S \;.\; P(x)</span></q> means <q>The predicate <span class="math inline">P(x)</span> is true for every <span class="math inline">x</span> in the set <span class="math inline">S</span></q>. It does not say anything about the truth or falsehood of <span class="math inline">P(x)</span> for <span class="math inline">x</span> not in <span class="math inline">S</span>, nor does it assert that there are any members of <span class="math inline">S</span>.</p>
+            <p>The notation <q><span class="math inline">\exists x \in S \;.\; P(x)</span></q> means <q>There is at least one element of <span class="math inline">S</span>, and at least one element of <span class="math inline">S</span> makes the predicate <span class="math inline">P(x)</span> true</q>. It does not say anything about the truth or falsehood of <span class="math inline">P(x)</span> for <span class="math inline">x</span> not in <span class="math inline">S</span>, nor if there are more (or even all) members of <span class="math inline">S</span> that also make <span class="math inline">P(x)</span> true.</p>
+            <p>The notation <q><span class="math inline">\forall x,y \in S</span></q> is shorthand for <q><span class="math inline">\forall x \in S \;.\; \forall y \in S</span></q>.</p>
+            <p>The notation <q><span class="math inline">\exists x,y \in S</span></q> is shorthand for <q><span class="math inline">\exists x \in S \;.\; \exists y \in S</span></q>.</p>
+            <h2 data-number="3.2" id="converting-forall-x-in-s.-cdots-to-forall-x.-cdots" data-number="3.2"><span class="header-section-number">3.2</span> Converting <q><span class="math inline">\forall x \in S\;.\; \cdots</span></q> to <q><span class="math inline">\forall x\;.\; \cdots</span></q></h2>
+            <p>Re-write <q><span class="math inline">\forall x \in S \;.\; \cdots</span></q> as <q><span class="math inline">\forall x \;.\; x \in S \rightarrow \cdots</span></q>.</p>
+            <p>If a domain is not specified and all quantifiers are given with sets, the implicit domain is union of all such sets or any superset containing that union.</p>
+            <h2 data-number="3.3" id="converting-forall-x.-cdots-to-forall-x-in-s.-cdots" data-number="3.3"><span class="header-section-number">3.3</span> Converting <q><span class="math inline">\forall x\;.\; \cdots</span></q> to <q><span class="math inline">\forall x \in S\;.\; \cdots</span></q></h2>
+            <p>Define a set <span class="math inline">U</span> representing the entire domain. The symbol <span class="math inline">U</span> is not required, but is often used with the intent that it suggest the <q>universal set</q> or the <q>universe of discourse</q>. In handwriting, <span class="math inline">U</span> and <span class="math inline">\cup</span> are easily confused so a different letter should be used instead.</p>
+            <p>Replace all <q><span class="math inline">\forall x \;.\; \cdots</span></q> with <q><span class="math inline">\forall x \in U \;.\; \cdots</span></q></p>
+            <section class="footnotes" role="doc-endnotes">
+            <hr />
+            <ol>
+            <li id="fn1" role="doc-endnote"><p>You’ll learn more about this in CS 3102 or CS 4102, but a very brief summary may be helpful now.</p>
+            <p><strong>P</strong> and <strong>NP</strong> are two sets of <em>problems</em>, tasks we might want an algorithm to solve, defined by some characteristics of the most efficient algorithm that could exist to solve that problem. Glossing over a lot of important details,</p>
+            <dl>
+            <dt>P</dt>
+            <dd>The problems that can be solved efficiently enough to be worth trying
+            </dd>
+            <dt>NP</dt>
+            <dd>The problems for which a putative answer can be checked to see if they are actually answers efficiently enough to be worth trying
+            </dd>
+            </dl>
+            <p>There’s some beautiful reasoning in computational theory that has shown a large set of problems in <strong>NP</strong> (the <q><strong>NP</strong> complete problems</q>) such that, if any one of them is in <strong>P</strong>, so is the entirety of the set <strong>NP</strong>. So if someone could just solve one of those problems efficiently, all of those other problems we wish we could solve but can’t will suddenly all become solvable too! A huge boon for computation, leading to people wanting to show <strong>P</strong> = <strong>NP</strong>.</p>
+            <p>However, one particular problem makes us hope the truth is <strong>P</strong> ≠ <strong>NP</strong> instead: public-key encryption. I want my computer to be able to solve puzzles that no other computer can solve, but all other computers can check to see if I solved correctly, so that my solving a puzzles from that set can prove to other computers that I’m me and not someone else. That (with some other number-theoretic magic) lets me communicate to servers with confidence that it’s just the two of us talking and no one else is pretending to be them or listening in. In other words, I rely on solving the puzzle being in <strong>NP</strong> but not <strong>P</strong> for everyone that does not have some secret only I have. But if someone proves that <strong>P</strong> = <strong>NP</strong> then having my secret is no longer necessary: everyone will be able to solve all the puzzles they can check the answer to, and much of modern computer security will collapse.</p>
+            <p>Arguably, all of digital commerce is gambling on <strong>P</strong> ≠ <strong>NP</strong> being true, despite no proof of that existing. This may be the largest bet ever placed in the history of the world.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            </ol>
+            </section>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

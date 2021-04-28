@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Exercise 2 Cirque du Ligne Droite</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Exercise 2 Cirque du Ligne Droite</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="structure.html">Course Structure</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+          <li><p class="navbar-text"><a href="weekly_guides.html">Weekly Guides</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a>
+        <ul>
+        <li><a href="#why-the-title-is-funny"><span class="toc-section-number">1.1</span> Why the title is funny</a></li>
+        </ul></li>
+        <li><a href="#exercise-2-1-programming-problems"><span class="toc-section-number">2</span> Exercise 2-1: Programming Problems</a>
+        <ul>
+        <li><a href="#deliverable"><span class="toc-section-number">2.1</span> Deliverable</a></li>
+        </ul></li>
+        <li><a href="#exercises-2-2-through-2-5-written-problems"><span class="toc-section-number">3</span> Exercises 2-2 through 2-5: Written Problems</a>
+        <ul>
+        <li><a href="#deliverable-1"><span class="toc-section-number">3.1</span> Deliverable</a></li>
+        </ul></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+                  <blockquote style="background-color:#fbb; font-size:150%">This page is currently under construction. Any content you see now is subject to change until the start of the coming semester. Expect some links to be broken.</blockquote>
+      <h1 data-number="1" id="introduction" data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+      <p>The purpose of this assignment is to develop your understanding of finite computation, focusing on the material in Chapter 3 of the textbook and the AON/NAND computing models discussed therein as well as in class.</p>
+      <p>These are models for finite computation because there is no way to provide dynamically-sized inputs within these models, instead each implementation can only accept inputs of a fixed length.</p>
+      <p>As we continue to study these models in class, we will explore the ways finite models are limitated, but also ways that they are valuable.</p>
+      <h2 data-number="1.1" id="why-the-title-is-funny" data-number="1.1"><span class="header-section-number">1.1</span> Why the title is funny</h2>
+      <p>In the humble opinion of Nate Brunelle, the title of this assignment is funny. The French <q>Cirque du Ligne Droite</q> translates to <q>Straight Line Circus</q>. Nate thinks it’s funny because it’s kind of like <q>Cirque du Soleil</q>. It’s funnier because Circus sounds like circuit, and circuits and straightline programs are our models of computing so far (get it?). It’s even FUNNIER because <q>circus</q> and <q>circuit</q> come from the same Latin root which means <q>circle</q>, so it’s an oxymoron to have a circular straightline. (Get it? Please say yes. Oh, gosh … what have I done?!)</p>
+      <h1 data-number="2" id="exercise-2-1-programming-problems" data-number="2"><span class="header-section-number">2</span> Exercise 2-1: Programming Problems</h1>
+      <p>The programming problems for this assignment are intended to get you acquainted with the AON-Straightline computing model. Most of what you’ll be doing here is implementing a few functions in this model. I encourage you to additionally practice the AON-Circuit model by either implementing each function as a circuit and then converting to Straightline, or else converting your implemented straightline program to a circuit (in either case, you are only required to submit the straightline).</p>
+      <p><em>Edit 2020-02-03: I neglected to remove the testing code from straightline.py, giving away the solution to the IMPL method. I encourage you to implement it on your own for the experience, but it will not be assessed as part of your grade.</em></p>
+      <p><em>Edit 2020-02-05: For COMPARE4, I originally required that you implement it in AON-Straightline (i.e. with ANDs, ORs, or NOTs only). I have decided to relax this requirement. I recommend implementing COMPARE4 by first implementing COMPARE3. To give you a hint on how this might work, if the most significant bit of two strings differ, then you can immediately tell which value is bigger. If the most significant bits match, then you are comparing two strings that are 1 bit shorter. If you impelement functions for COMPARE3, COMPARE2, COMPARE1, and IF, you may use those as subroutines for COMPARE4. If you did/do translate COMPARE4 to only AON, then that will be worth some extra credit.</em></p>
+      <h2 data-number="2.1" id="deliverable" data-number="2.1"><span class="header-section-number">2.1</span> Deliverable</h2>
+      <p>Before you begin on this assignment, download either <a href="files/exercises/exercise2_python/straightline.py">straightline.py</a> or <a href="files/exercises/exercise2_java/straightline.java">straightline.java</a> depending on which programming language you prefer. Do ctrl+f and search for <q>TODO</q> to find all places where you must fill in code. Please do not change any code you’re not instructed to change. (<strong>If you’re using java, do not add a package declaration to your program.</strong>)</p>
+      <p>Follow the instructions in the program you downloaded (follow them line-by-line in python, follow the numbers in order in Java). Submit the completed straightline file. Your code will receive full credit provided you followed the instructions and, when run (with asserts enabled), the printed output has exclusively encouraging messages (and has no errors).</p>
+      <p>If you are stuck on one of the asserts, comment out that assert statement to skip it.</p>
+      <h1 data-number="3" id="exercises-2-2-through-2-5-written-problems" data-number="3"><span class="header-section-number">3</span> Exercises 2-2 through 2-5: Written Problems</h1>
+      <p>Answer each of the problems contained in <a href="files/exercises/exercise2.pdf">this pdf</a> with an accompanying proof.</p>
+      <p>To begin, download <a href="files/exercises/exercise2.zip">exercise2.zip</a> and upload as a new project in overleaf. Within that zip you will see 5 tex files. the <code>exercis21.tex</code> file contains the which generates the pdf. You will provide your answers in the <code>exercise2-2.tex</code>, <code>exercise2-3.tex</code>, <code>exercise2-4.tex</code>, and <code>exercise2-5.tex</code> files.</p>
+      <p>First, change <code>\submitter{TODO: your name}</code> in <code>exercise2.tex</code> to contain your name and UVA email id (e.g. <code>\submitter{Grace Hopper (gmh1a)}</code>)</p>
+      <p>Next, cite all your sources in <code>\collaborators{TODO: replace ...}</code> according to the <a href="https://www.cs.virginia.edu/~njb2b/cstheory/s2020/syllabus.html#no-plagiarism-nor-anything-like-it">course policy</a></p>
+      <p>At this point, fill in all of your solutions in the proper tex file. When you rebuild the pdf, your solutions should appear as you write them.</p>
+      <h2 data-number="3.1" id="deliverable-1" data-number="3.1"><span class="header-section-number">3.1</span> Deliverable</h2>
+      <p>You will need to submit a separate pdf for each of the exercises 2-2, 2-3, 2-4, and 2-5. We do this for a few reasons: we can release individual problems’ grades as they’re graded rather than waiting for the whole problem set to be graded, we can adjust deadlines for individual problems if necessary, if you need extra time on one problem then you can submit just that one late instead of receiving a late penalty on all problems, etc. We have made it easy for you to get these separate pdfs, however.</p>
+      <p>At the very top of <code>exercise2.tex</code> there is a line which reads <code>\usepackage{uvatoc}</code>. That line tells LaTeX include everything in the pdf. To include only one problem, comment that line out and uncomment (one at a time) <code>\usepackage[response2]{uvatoc}</code>, <code>\usepackage[response3]{uvatoc}</code>, <code>\usepackage[response4]{uvatoc}</code>, and <code>\usepackage[response5]{uvatoc}</code> to build a pdf with only exercise 2-2, 2-3, 2-4, and 2-5 respectively.</p>
+      <p>Rename the pdf files for the appropriate exercise, and submit to the <a href="https://kytos.cs.virginia.edu/cstheory">assignments page</a>.</p>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2021 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2021-01-21 16:56
+  </footer>
+</body>
+</html>

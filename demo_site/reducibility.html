@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Reducibility</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Reducibility</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#reduction"><span class="toc-section-number">1</span> Reduction</a></li>
+        <li><a href="#logical-reduction"><span class="toc-section-number">2</span> Logical reduction</a>
+        <ul>
+        <li><a href="#proof-by-induction"><span class="toc-section-number">2.1</span> Proof by Induction</a></li>
+        <li><a href="#proof-by-contradiction"><span class="toc-section-number">2.2</span> Proof by Contradiction</a></li>
+        <li><a href="#reductio-ad-absurdum"><span class="toc-section-number">2.3</span> <em>reductio ad absurdum</em></a></li>
+        </ul></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+            <h1 data-number="1" id="reduction" data-number="1"><span class="header-section-number">1</span> Reduction</h1>
+            <p>In theoretic computation, we discuss the notion of <q>reducible</q>. A problem family <span class="math inline">P_1</span> is said to be <strong>reducible</strong> to another problem family <span class="math inline">P_2</span> if we know of some process that looks like</p>
+            <dl>
+            <dt>How to solve <span class="math inline">p \in P_1</span></dt>
+            <dd><ol type="1">
+            <li>convert <span class="math inline">p</span> into <span class="math inline">q \in P_2</span></li>
+            <li>solve <span class="math inline">q</span></li>
+            <li>convert the solution to <span class="math inline">q</span> into a solution of <span class="math inline">p</span></li>
+            </ol>
+            </dd>
+            </dl>
+            <p>This concept will get much more attention in your Theory of Computation course, including categorizing how much work the conversion can take; but one example is useful in understanding logic.</p>
+            <p>One of the best-known introductory tests on computational theory defines reduction as follows:</p>
+            <blockquote>
+            <p>A <em><strong>reduction</strong></em> is a way of converting one problem into another in such a way that a solution to the second problem can be used to solve the first problem.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+            </blockquote>
+            <h1 data-number="2" id="logical-reduction" data-number="2"><span class="header-section-number">2</span> Logical reduction</h1>
+            <p>Many proofs have the general form</p>
+            <ol type="1">
+            <li>Take the theorem and convert it into a different claim</li>
+            <li>Appeal to an already-existing proof of that different claim</li>
+            <li>Undo the conversion (or state that no undo is needed)</li>
+            </ol>
+            <p>This is a logical reduction: we <em>reduce</em> the new theorem to an old theorem.</p>
+            <p>The existence of reductions are often denoted using a subscripted <span class="math inline">\le</span> symbol: <span class="math inline">x \le_y z</span> means <q>(new theorem) <span class="math inline">x</span> can be reduced to (old theorem) <span class="math inline">z</span>, using only tools in <span class="math inline">y</span> to do the reduction.</q> There is no standard way to write <q>logically reducible</q>; we’ll use <span class="math inline">\le_{\mathrm logic}</span> in this writeup.</p>
+            <h2 data-number="2.1" id="proof-by-induction" data-number="2.1"><span class="header-section-number">2.1</span> Proof by Induction</h2>
+            <p>The inductive step in proof by induction is a very direct application of reduction: we reduce <span class="math inline">P(n+1)</span> to <span class="math inline">P(n)</span>, where <span class="math inline">P</span> is the inductive hypotheses<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. In other words, that case shows that <span class="math inline">P(n+1) \le_{\mathrm{logic}} P(n)</span>.</p>
+            <p>Another way of thinking about proof by induction generally is that the inductive steps shows us, for any <span class="math inline">n</span>, how to reduce <span class="math inline">P(n)</span> to <span class="math inline">P(0)</span>: that is, <span class="math inline">P(n) \le_{\mathrm{logic}} P(0)</span>. This is shown by providing a way of constructing the proof for any given <span class="math inline">n</span>.</p>
+            <div class="example long">
+            <p>Consider the following proof of <span class="math inline">\forall n \in \mathbb N \;.\; 0 = 2n \mod 2</span>.</p>
+            <div class="proof">
+            <p>We proceed by induction.</p>
+            <p><strong>Base case</strong>: When <span class="math inline">n = 0</span>, <span class="math inline">0 = 2n \mod 2</span> because <span class="math inline">2n = 0</span>.</p>
+            <p><strong>Inductive case</strong>: Assume <span class="math inline">2n = 0 \mod 2</span>. Then <span class="math inline">2(n+1) = 2n+2</span>, and <span class="math inline">2n + 2 = 2n \mod 2</span>. But we know that <span class="math inline">0 = 2n \mod 2</span> our assumption, so <span class="math inline">0 = 2(n+1) \mod 2</span> as well.</p>
+            <p>By the principle of induction, it follows that <span class="math inline">\forall n \in \mathbb N \;.\; 0 = 2n \mod 2</span>.</p>
+            </div>
+            <p>If we consider this proof as a reduction template, we could prove <span class="math inline">0 = 2(7) \mod 2</span> as follows:</p>
+            <div class="proof">
+            <p><span class="math inline">0 = 2(0) \mod 2</span> because <span class="math inline">2(0) = 0</span>.</p>
+            <p><span class="math inline">0 = 2(1) \mod 2</span> because <span class="math inline">2(1) = 2(0)+2</span>, and <span class="math inline">2(0) + 2 = 2(0) \mod 2</span>. But we know that <span class="math inline">0 = 2(0) \mod 2</span> by the previous step, so <span class="math inline">0 = 2(1) \mod 2</span> as well.</p>
+            <p><span class="math inline">0 = 2(2) \mod 2</span> because <span class="math inline">2(2) = 2(1)+2</span>, and <span class="math inline">2(1) + 2 = 2(1) \mod 2</span>. But we know that <span class="math inline">0 = 2(1) \mod 2</span> by the previous step, so <span class="math inline">0 = 2(2) \mod 2</span> as well.</p>
+            <p><span class="math inline">0 = 2(3) \mod 2</span> because <span class="math inline">2(3) = 2(2)+2</span>, and <span class="math inline">2(2) + 2 = 2(2) \mod 2</span>. But we know that <span class="math inline">0 = 2(2) \mod 2</span> by the previous step, so <span class="math inline">0 = 2(3) \mod 2</span> as well.</p>
+            <p><span class="math inline">0 = 2(4) \mod 2</span> because <span class="math inline">2(4) = 2(3)+2</span>, and <span class="math inline">2(3) + 2 = 2(3) \mod 2</span>. But we know that <span class="math inline">0 = 2(3) \mod 2</span> by the previous step, so <span class="math inline">0 = 2(4) \mod 2</span> as well.</p>
+            <p><span class="math inline">0 = 2(5) \mod 2</span> because <span class="math inline">2(5) = 2(4)+2</span>, and <span class="math inline">2(4) + 2 = 2(4) \mod 2</span>. But we know that <span class="math inline">0 = 2(4) \mod 2</span> by the previous step, so <span class="math inline">0 = 2(5) \mod 2</span> as well.</p>
+            <p><span class="math inline">0 = 2(6) \mod 2</span> because <span class="math inline">2(6) = 2(5)+2</span>, and <span class="math inline">2(5) + 2 = 2(5) \mod 2</span>. But we know that <span class="math inline">0 = 2(5) \mod 2</span> by the previous step, so <span class="math inline">0 = 2(6) \mod 2</span> as well.</p>
+            <p><span class="math inline">0 = 2(7) \mod 2</span> because <span class="math inline">2(7) = 2(6)+2</span>, and <span class="math inline">2(6) + 2 = 2(6) \mod 2</span>. But we know that <span class="math inline">0 = 2(6) \mod 2</span> by the previous step, so <span class="math inline">0 = 2(7) \mod 2</span> as well.</p>
+            </div>
+
+            </div>
+            <h2 data-number="2.2" id="proof-by-contradiction" data-number="2.2"><span class="header-section-number">2.2</span> Proof by Contradiction</h2>
+            <p>One way of viewing proof by contradiction is as a reduction to <em>modus tolens</em>: <span class="math inline">\big((A \rightarrow B) \land (\lnot B)\big) \vdash (\lnot A)</span>. Generally, the <span class="math inline">B</span> we use is <span class="math inline">\bot</span>, which gives us the <span class="math inline">\lnot B</span> by defintion of <span class="math inline">\lnot \bot</span>. The reduction works as follows:</p>
+            <div class="theorem">
+            <p><span class="math inline">\lnot A</span></p>
+            </div>
+            <div class="proof">
+            <p>Because (<em>bulk of proof goes here</em>), <span class="math inline">A \rightarrow \bot</span>. (<em>we generally omit saying <q>But trivially, <span class="math inline">\lnot \bot</span></q></em>) By <em>modus tolens</em>, <span class="math inline">\lnot A</span>.</p>
+            </div>
+            <p>By far the most common way to prove <span class="math inline">A \rightarrow B</span> is to assume <span class="math inline">A</span> and prove <span class="math inline">\vdash B</span>. This uses the <q>conditional introduction</q> rule which can be formalized in TFL as</p>
+            <table class="TFL">
+            <tr>
+            <td>
+            <span class="math inline">i</span>
+            </td>
+            <td>
+            <table class="TFL">
+            <tr>
+            <td>
+            <span class="math inline">i</span>
+            </td>
+            <td>
+            <span class="math inline">A</span>
+            </td>
+            </tr>
+            <tr class="then">
+            <td>
+            <span class="math inline">j</span>
+            </td>
+            <td>
+            <span class="math inline">B</span>
+            </td>
+            <td>
+             
+            </td>
+            </tr>
+            </table>
+            </td>
+            </tr>
+            <tr class="then">
+            <td>
+            <span class="math inline">k</span>
+            </td>
+            <td>
+            <span class="math inline">A \rightarrow B</span>
+            </td>
+            <td>
+            <span class="math inline">\rightarrow</span>I <span class="math inline">i</span>
+            </td>
+            </tr>
+            </table>
+            <p>Thus, we could characterize proof by contradiction as</p>
+            <ol type="1">
+            <li><q>Prove <span class="math inline">A</span></q> <span class="math inline">\le_{\mathrm logic}</span> <q>assume <span class="math inline">\lnot A</span>, prove <span class="math inline">\bot</span></q> because
+            <ol start="2" type="1">
+            <li><q>Prove <span class="math inline">A</span></q> <span class="math inline">\le_{\mathrm logic}</span> <q>prove <span class="math inline">\lnot B</span></q> via double negation, where <span class="math inline">B = \lnot A</span>.</li>
+            <li><q>Prove <span class="math inline">\lnot B</span></q> <span class="math inline">\le_{\mathrm logic}</span> <q>prove <span class="math inline">B \rightarrow \bot</span></q> via modus tolens.</li>
+            <li><q>Prove <span class="math inline">B \rightarrow \bot</span></q> <span class="math inline">\le_{\mathrm logic}</span> <q>assume <span class="math inline">B</span>, prove <span class="math inline">\bot</span></q> via conditional introduction.</li>
+            </ol></li>
+            </ol>
+            <p>However, since proof by contradiction is so common, we generally do not note these intermediate reductions, treating the whole as a common type of proof.</p>
+            <h2 data-number="2.3" id="reductio-ad-absurdum" data-number="2.3"><span class="header-section-number">2.3</span> <em>reductio ad absurdum</em></h2>
+            <p>One of the oldest and best-known-outside-CS examples of reduction is the proof strategy <em>reductio ad absurdum</em> (ἡ εἰς τὸ ἀδύνατον ἀπόδειξις). This is an informal version of proof by contradiction. Basically it works by saying <q><em>X</em> must be false because if it were true, <em>Y</em> would be true and it’s clearly not.</q></p>
+            <div class="example long">
+            <p><em>I must not be the smartest person in the world; if I were, I’d be rich and famous.</em></p>
+            <p>The above <em>reduces</em> being not being smartest to not being rich.</p>
+
+            </div>
+            <div class="example long">
+            <p><em>Time travel will never be discovered; if it were, some time traveler would have come back to now by now.</em></p>
+            <p>The above <em>reduces</em> time travel existing to time travelers visiting the present.</p>
+
+            </div>
+            <p>As with all informal pseudo-proofs, <em>reductio ad absurdum</em> is susceptible to various fallacies. One in particular is so common it has a special name: the <a href="https://en.wikipedia.org/wiki/Slippery_slope">Slippery Slope fallacy</a>. Slippery slopes work by having a large number of steps (<span class="math inline">A</span> reduces to <span class="math inline">B</span> reduces to <span class="math inline">C</span> reduces to … reduces to <span class="math inline">Y</span> reduces to <span class="math inline">Z</span>) and either hiding an invalid reduction in the middle somewhere where it might not be noticed or by having each step being individually probable, but the combined probability being quite low.</p>
+            <section class="footnotes" role="doc-endnotes">
+            <hr />
+            <ol>
+            <li id="fn1" role="doc-endnote"><p>Michael Sipser, <em>Introduction to Computational Theory</em>. PWS Publishing (Boston, MA: 1997). ISBN: 0-534-94728-X<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn2" role="doc-endnote"><p>Note: using <span class="math inline">P</span> (a predicate) as a symbol for the inductive hypotheses is something our textbook does often, but not something that is very common outside of that text.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            </ol>
+            </section>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

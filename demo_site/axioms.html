@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Axioms</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Axioms</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#equivalences"><span class="toc-section-number">1</span> Equivalences</a>
+        <ul>
+        <li><a href="#simplifications"><span class="toc-section-number">1.1</span> Simplifications</a></li>
+        <li><a href="#other-equivalences"><span class="toc-section-number">1.2</span> Other equivalences</a></li>
+        </ul></li>
+        <li><a href="#entailments"><span class="toc-section-number">2</span> Entailments</a>
+        <ul>
+        <li><a href="#set-entailment"><span class="toc-section-number">2.1</span> Set entailment</a></li>
+        <li><a href="#qualified-entailments"><span class="toc-section-number">2.2</span> Qualified entailments</a></li>
+        <li><a href="#logical-entailment"><span class="toc-section-number">2.3</span> Logical entailment</a></li>
+        <li><a href="#assume-and-prove-entailment"><span class="toc-section-number">2.4</span> Assume-and-prove entailment</a></li>
+        </ul></li>
+        <li><a href="#mathematical-identities"><span class="toc-section-number">3</span> Mathematical Identities</a></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+            <h1 data-number="1" id="equivalences" data-number="1"><span class="header-section-number">1</span> Equivalences</h1>
+            <p>Two expressions are equivalent if they have the same truth valuation regardless of</p>
+            <h2 data-number="1.1" id="simplifications" data-number="1.1"><span class="header-section-number">1.1</span> Simplifications</h2>
+            <p>Simplifications have the property that they make expressions smaller, with fewer operators and propositions. They are equivalences so they also work backwards (i.e. making expressions larger), a process sometimes called <q>introduction</q>, as in <q>we can introduce a double negation</q></p>
+            <p>The first five are big and worth memorizing</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;">long</th>
+            <th style="text-align: center;">simplified</th>
+            <th style="text-align: left;">Name of rule</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">\lnot \lnot P</span></td>
+            <td style="text-align: center;"><span class="math inline">P</span></td>
+            <td style="text-align: left;">double negation</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span class="math inline">P \land \bot</span></td>
+            <td style="text-align: center;"><span class="math inline">\bot</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">P \land \top</span></td>
+            <td style="text-align: center;"><span class="math inline">P</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span class="math inline">P \lor \bot</span></td>
+            <td style="text-align: center;"><span class="math inline">P</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">P \lor \top</span></td>
+            <td style="text-align: center;"><span class="math inline">\top</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            </tbody>
+            </table>
+            <p>and the rest are either less commonly useful or can be derived from the five above rules</p>
+            <table>
+            <colgroup>
+            
+            
+            
+            
+            
+            
+            </colgroup>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;">simplified</th>
+            <th style="text-align: center;"><span class="math inline">\rightarrow</span></th>
+            <th style="text-align: center;"><span class="math inline">\leftrightarrow</span></th>
+            <th style="text-align: center;"><span class="math inline">\oplus</span></th>
+            <th style="text-align: center;"><span class="math inline">\land</span></th>
+            <th style="text-align: center;"><span class="math inline">\lor</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">P</span></td>
+            <td style="text-align: center;"><span class="math inline">\top \rightarrow P</span><br/><span class="math inline">\lnot P \rightarrow P</span></td>
+            <td style="text-align: center;"><span class="math inline">\top \leftrightarrow P</span></td>
+            <td style="text-align: center;"><span class="math inline">\bot \oplus P</span></td>
+            <td style="text-align: center;"><span class="math inline">\top \land P</span><br/><span class="math inline">P \land P</span></td>
+            <td style="text-align: center;"><span class="math inline">\bot \lor P</span><br/><span class="math inline">P \lor P</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span class="math inline">\lnot P</span></td>
+            <td style="text-align: center;"><span class="math inline">P \rightarrow \bot</span><br/><span class="math inline">P \rightarrow \lnot P</span></td>
+            <td style="text-align: center;"><span class="math inline">\bot \leftrightarrow P</span></td>
+            <td style="text-align: center;"><span class="math inline">\top \oplus P</span></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">\top</span></td>
+            <td style="text-align: center;"><span class="math inline">\bot \rightarrow P</span><br/><span class="math inline">P \rightarrow \top</span><br/><span class="math inline">P \rightarrow P</span></td>
+            <td style="text-align: center;"><span class="math inline">P \leftrightarrow P</span></td>
+            <td style="text-align: center;"><span class="math inline">P \oplus \lnot P</span></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"><span class="math inline">\top \lor P</span><br/><span class="math inline">P \lor \lnot P</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span class="math inline">\bot</span></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"><span class="math inline">P \leftrightarrow \lnot P</span></td>
+            <td style="text-align: center;"><span class="math inline">P \oplus P</span></td>
+            <td style="text-align: center;"><span class="math inline">\bot \land P</span><br/><span class="math inline">P \land \lnot P</span></td>
+            <td style="text-align: center;"></td>
+            </tr>
+            </tbody>
+            </table>
+            <h2 data-number="1.2" id="other-equivalences" data-number="1.2"><span class="header-section-number">1.2</span> Other equivalences</h2>
+            <p>The following operators are both <strong>associative</strong> (you can add and remove parentheses around them) and <strong>commutative</strong> (you can swap their operands’ position): <span class="math inline">\land</span>, <span class="math inline">\lor</span>, <span class="math inline">\oplus</span></p>
+            <p>The following operator is <em>commutative</em> but not <em>associative</em>: <span class="math inline">\leftrightarrow</span></p>
+            <p>Of the other rules here, the first several are worth memorizing</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;">form 1</th>
+            <th style="text-align: center;">form 2</th>
+            <th style="text-align: left;">Name of rule</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">A \rightarrow B</span></td>
+            <td style="text-align: center;"><span class="math inline">\lnot A \lor B</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span class="math inline">A \land (B \lor C)</span></td>
+            <td style="text-align: center;"><span class="math inline">(A \land B) \lor (A \land C)</span></td>
+            <td style="text-align: left;">Distributive law</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">A \lor (B \land C)</span></td>
+            <td style="text-align: center;"><span class="math inline">(A \lor B) \land (A \lor C)</span></td>
+            <td style="text-align: left;">Distributive law</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span class="math inline">\lnot (A \land B)</span></td>
+            <td style="text-align: center;"><span class="math inline">(\lnot A) \lor (\lnot B)</span></td>
+            <td style="text-align: left;">De Morgan’s law</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">\lnot (A \lor B)</span></td>
+            <td style="text-align: center;"><span class="math inline">(\lnot A) \land (\lnot B)</span></td>
+            <td style="text-align: left;">De Morgan’s law</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span class="math inline">(A \leftrightarrow B)</span></td>
+            <td style="text-align: center;"><span class="math inline">(A \rightarrow B) \land (B \rightarrow A)</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">(A \oplus B)</span></td>
+            <td style="text-align: center;"><span class="math inline">(A \lor B) \land \lnot (A \land B)</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            </tbody>
+            </table>
+            <p>and the rest are either less commonly useful or can be derived easily from other worth-memorizing rules</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;">form 1</th>
+            <th style="text-align: center;">form 2</th>
+            <th style="text-align: left;">Name of rule</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">A \oplus B</span></td>
+            <td style="text-align: center;"><span class="math inline">\lnot (A \leftrightarrow B)</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;"><span class="math inline">A \leftrightarrow B</span></td>
+            <td style="text-align: center;"><span class="math inline">\lnot (A \oplus B)</span></td>
+            <td style="text-align: left;">xnor</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;"><span class="math inline">P \rightarrow (A \lor Q)</span></td>
+            <td style="text-align: center;"><span class="math inline">(P \land \lnot A) \rightarrow Q</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            </tbody>
+            </table>
+            <h1 data-number="2" id="entailments" data-number="2"><span class="header-section-number">2</span> Entailments</h1>
+            <h2 data-number="2.1" id="set-entailment" data-number="2.1"><span class="header-section-number">2.1</span> Set entailment</h2>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">Given</th>
+            <th style="text-align: left;">Entails</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">P(x)</span> and <span class="math inline">x \in S</span></td>
+            <td style="text-align: left;"><span class="math inline">\exists x \in S \;.\; P(x)</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">\forall x \in S \;.\; P(x)</span> and <span class="math inline">T \subseteq S</span></td>
+            <td style="text-align: left;"><span class="math inline">\forall x \in T \;.\; P(x)</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">\exists x \in S \;.\; P(x)</span> and <span class="math inline">T \supseteq S</span></td>
+            <td style="text-align: left;"><span class="math inline">\exists x \in T \;.\; P(x)</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">\forall x \in S \;.\; P(x)</span> and <span class="math inline">S \neq \emptyset</span></td>
+            <td style="text-align: left;"><span class="math inline">\exists x \in S \;.\; P(x)</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">|S| \neq |T|</span></td>
+            <td style="text-align: left;"><span class="math inline">S \neq T</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">|S| &lt; |T|</span></td>
+            <td style="text-align: left;"><span class="math inline">S \not \supseteq T</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">\exists x \in S \;.\; P(x)</span></td>
+            <td style="text-align: left;"><span class="math inline">P \neq \emptyset</span></td>
+            </tr>
+            </tbody>
+            </table>
+            <h2 data-number="2.2" id="qualified-entailments" data-number="2.2"><span class="header-section-number">2.2</span> Qualified entailments</h2>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">Given</th>
+            <th style="text-align: left;">Entails</th>
+            <th style="text-align: left;">Names</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">\forall x \in S \;.\; P(x)</span></td>
+            <td style="text-align: left;"><span class="math inline">P(s)</span>, for any <span class="math inline">s \in S</span> we care to pick</td>
+            <td style="text-align: left;">universal instantiation</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">\exists x \in S \;.\; P(x)</span></td>
+            <td style="text-align: left;"><span class="math inline">s \in S \land P(s)</span> where <span class="math inline">s</span> is an otherwise-undefined new variable</td>
+            <td style="text-align: left;">existential instantiation</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">s \in S \vdash P(s)</span></td>
+            <td style="text-align: left;"><span class="math inline">\forall x \in S \;.\; P(x)</span></td>
+            <td style="text-align: left;">universal generalization</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">P(s) \land s \in S</span></td>
+            <td style="text-align: left;"><span class="math inline">\exists x \in S \;.\; P(x)</span></td>
+            <td style="text-align: left;">existential generalization</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>These also all have versions that use a defined domain instead of set membership. Universal generalization is sometimes called <q>skolemization.</q></p>
+            <h2 data-number="2.3" id="logical-entailment" data-number="2.3"><span class="header-section-number">2.3</span> Logical entailment</h2>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">Given</th>
+            <th style="text-align: left;">Entails</th>
+            <th style="text-align: left;">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">\bot</span></td>
+            <td style="text-align: left;"><span class="math inline">{x}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"></td>
+            <td style="text-align: left;"><span class="math inline">{\top}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"></td>
+            <td style="text-align: left;"><span class="math inline">{A \lor \lnot A}</span></td>
+            <td style="text-align: left;">excluded middle</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">A \land B</span></td>
+            <td style="text-align: left;"><span class="math inline">{A}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">A</span> and <span class="math inline">B</span></td>
+            <td style="text-align: left;"><span class="math inline">{A \land B}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">A</span></td>
+            <td style="text-align: left;"><span class="math inline">{A \lor B}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">A \lor B</span> and <span class="math inline">\lnot B</span></td>
+            <td style="text-align: left;"><span class="math inline">{A}</span></td>
+            <td style="text-align: left;">disjuctive syllogism</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">A \rightarrow B</span> and <span class="math inline">B \rightarrow C</span></td>
+            <td style="text-align: left;"><span class="math inline">{A \rightarrow C}</span></td>
+            <td style="text-align: left;">hypothetical syllogism; transitivity of implication</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">A \rightarrow B</span> and <span class="math inline">A</span></td>
+            <td style="text-align: left;"><span class="math inline">{B}</span></td>
+            <td style="text-align: left;">modus ponens</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">A \rightarrow B</span> and <span class="math inline">\lnot B</span></td>
+            <td style="text-align: left;"><span class="math inline">{\lnot A}</span></td>
+            <td style="text-align: left;">modus tolens</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">A \leftrightarrow B</span></td>
+            <td style="text-align: left;"><span class="math inline">{A \rightarrow B}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">{A \rightarrow C}</span>, <span class="math inline">{B \rightarrow B}</span>, and <span class="math inline">{A \lor B}</span></td>
+            <td style="text-align: left;"><span class="math inline">{C}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">{A \rightarrow B}</span>, <span class="math inline">{C \rightarrow D}</span>, and <span class="math inline">{A \lor C}</span></td>
+            <td style="text-align: left;"><span class="math inline">{B \lor D}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">A \rightarrow B</span></td>
+            <td style="text-align: left;"><span class="math inline">{A \rightarrow (A \land B)}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">\lnot(A \land B)</span>, <span class="math inline">A</span></td>
+            <td style="text-align: left;"><span class="math inline">{\lnot B}</span></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            </tbody>
+            </table>
+            <h2 data-number="2.4" id="assume-and-prove-entailment" data-number="2.4"><span class="header-section-number">2.4</span> Assume-and-prove entailment</h2>
+            <p>A proof that assumes <span class="math inline">A</span> and derives <span class="math inline">B</span> entails that <span class="math inline">A \rightarrow B</span>. This is commonly used in the inductive step of a proof by contradiction.</p>
+            <p>A proof that assumes <span class="math inline">A</span> and derives <span class="math inline">\bot</span> entails that <span class="math inline">\lnot A</span>. This is called <q>proof by contradiction</q> or <q>indirect proof.</q></p>
+            <h1 data-number="3" id="mathematical-identities" data-number="3"><span class="header-section-number">3</span> Mathematical Identities</h1>
+            <p>The following are all true for all real numbers where both sides of the equals sign are defined:</p>
+            <ul>
+            <li><span class="math inline">\displaystyle \log_a(a^x) = x</span></li>
+            <li><span class="math inline">\displaystyle a^{\log_a(x)} = x</span></li>
+            <li><span class="math inline">\displaystyle \log_a(x y) = \log_a(x) + \log_a(y)</span></li>
+            <li><span class="math inline">\displaystyle \log_a\left(\frac{x}{y}\right) = \log_a(x) - \log_a(y)</span></li>
+            <li><span class="math inline">\displaystyle \log_a(x^y) = y \log_a(x)</span></li>
+            <li><span class="math inline">\displaystyle \log_a(x) = \frac{\log_b(x)}{\log_b(a)}</span></li>
+            <li><span class="math inline">\displaystyle \log_{a^b}(x) = b^{-1}\log_a(x)</span></li>
+            </ul>
+            <p>The following are also true:</p>
+            <ul>
+            <li><span class="math inline">(a \in \mathbb Z) \land (a &gt; 1) \vDash (a</span> has at least two factors<span class="math inline">)</span></li>
+            <li><span class="math inline">(a \in \mathbb Z) \land (a &gt; 1) \land (a</span> has exactly two factors<span class="math inline">) \equiv (a</span> is prime<span class="math inline">)</span></li>
+            <li>Each integer greater than 1 has exactly one prime factorization</li>
+            </ul>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Glossary of logical terms</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Glossary of logical terms</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div class="span12">
+            <p>See also our <a href="symbols.html">list of symbols</a></p>
+            <dl>
+            <dt>Antecedent</dt>
+            <dd>The left-hand operand of a conditional; the <span class="math inline">X</span> is <span class="math inline">X \rightarrow Y</span>.
+            </dd>
+            <dt>Axiom</dt>
+            <dd>Something we accept as true without requiring a proof.
+            </dd>
+            <dt>Associative</dt>
+            <dd>Of an operator, meaning the order of operations when several of that operator are applied in a row does not matter. To say some operator <span class="math inline">\cdot</span> is associative means that <span class="math inline">(P \cdot Q) \cdot R \equiv P \cdot (Q \cdot R)</span> for all propositions <span class="math inline">P</span>, <span class="math inline">Q</span>, and <span class="math inline">R</span>.
+            </dd>
+            <dt>Biconditional</dt>
+            <dd>See <em>Iff</em>.
+            </dd>
+            <dt>Bi-implication</dt>
+            <dd>See <em>Iff</em>.
+            </dd>
+            <dt>Commutative</dt>
+            <dd>Of an operator, meaning the order of its operands does not matter. To say some operator <span class="math inline">\cdot</span> is commutative means that <span class="math inline">P \cdot Q \equiv Q \cdot P</span> for all propositions <span class="math inline">P</span> and <span class="math inline">Q</span>.
+            </dd>
+            <dt>Conjunction</dt>
+            <dd>Logical AND (<span class="math inline">\land</span>).
+            </dd>
+            <dt>Consequent</dt>
+            <dd>The right-hand operand of a conditional; the <span class="math inline">Y</span> is <span class="math inline">X \rightarrow Y</span>.
+            </dd>
+            <dt>Contradiction</dt>
+            <dd>A logical expression that is equivalent to FALSE (<span class="math inline">\bot</span>).
+            </dd>
+            <dt>De Morgan’s laws</dt>
+            <dd><p>Two specific, related logical equivalences; see our <a href="axioms.html#equivalences">list of equivalences</a> for their form.</p>
+            <p>Because of their related structure, it is not uncommon to refer to both together in the singular (i.e. <q>De Morgan’s law</q>).</p>
+            </dd>
+            <dt>Disjunction</dt>
+            <dd>Logical OR (<span class="math inline">\lor</span>).
+            </dd>
+            <dt>Domain</dt>
+            <dd>The possible values a variable could take under a quantifier; for example, if the domain is <q>all animals</q> then <span class="math inline">\forall x \;.\; F(x)</span> means <q><span class="math inline">F</span> is true for all animals</q>.
+            </dd>
+            <dt>Equivalent</dt>
+            <dd>Two logical expressions <span class="math inline">P</span> and <span class="math inline">Q</span> are equivalent if and only if the expression <span class="math inline">P \leftrightarrow Q</span> is a tautology.
+            </dd>
+            <dt>Formula</dt>
+            <dd>see <em>Logical Expression</em>.
+            </dd>
+            <dt>Iff</dt>
+            <dd>A contraction of <q>if and only if</q>, a name for the operator <span class="math inline">\leftrightarrow</span>.
+            </dd>
+            <dt>Logical Expression</dt>
+            <dd>One or more propositions or predicates, combined with operators so that the whole is a predicate or proposition.
+            </dd>
+            <dt>Necessary</dt>
+            <dd><p>Cannot happen without. If <span class="math inline">A</span> is a necessary condition for <span class="math inline">B</span>, then we know both</p>
+            <ul>
+            <li>Without <span class="math inline">A</span>, no <span class="math inline">B</span> is possible. <span class="math inline">\lnot A \rightarrow \lnot B</span></li>
+            <li>If you see <span class="math inline">B</span>, <span class="math inline">A</span> must also be. <span class="math inline">B \rightarrow A</span></li>
+            </ul>
+            <p>Often used to suggest partial causation or a requirement. Compare <em>Sufficient</em>.</p>
+            </dd>
+            <dt>Predicate</dt>
+            <dd><p>A single word for two related concepts:</p>
+            <ul>
+            <li>In logic, an incomplete proposition, where one or more component has been replaced by a <em>Variable</em>.</li>
+            <li>In programming, a subroutine that (a) has no side-effects and (b) always returns a Boolean value.</li>
+            </ul>
+            </dd>
+            <dt>Proposition</dt>
+            <dd>A statement that, by construction, must either be true or false.
+            </dd>
+            <dt>Quantifier</dt>
+            <dd>One of <span class="math inline">\forall</span> or <span class="math inline">\exists</span>; some people also include <span class="math inline">\nexists</span> while others think of that as being shorthand for <span class="math inline">\lnot \exists</span>.
+            </dd>
+            <dt>Satisfiable</dt>
+            <dd>A satisfiable expression is not a contradiction.
+            </dd>
+            <dt>Sentence</dt>
+            <dd>see <em>Logical Expression</em>.
+            </dd>
+            <dt>Sufficient</dt>
+            <dd><p>Always happens if. If <span class="math inline">A</span> is a sufficient condition for <span class="math inline">B</span>, then we know both</p>
+            <ul>
+            <li>If you see <span class="math inline">A</span>, <span class="math inline">B</span> must also be. <span class="math inline">A \rightarrow B</span></li>
+            <li>If you don’t see <span class="math inline">B</span>, <span class="math inline">A</span> can’t be. <span class="math inline">\lnot B \rightarrow \lnot A</span></li>
+            </ul>
+            <p>Often used to suggest causation. Compare <em>Necessary</em>.</p>
+            </dd>
+            <dt>Tautology</dt>
+            <dd>A logical expression that is equivalent to TRUE (<span class="math inline">\top</span>).
+            </dd>
+            <dt>Universe of Discourse</dt>
+            <dd>see <em>Domain</em>.
+            </dd>
+            <dt>Variable</dt>
+            <dd><p>A single word for (at least) three concepts with similar but non-identical meaning:</p>
+            <ul>
+            <li>In algebra, a place-holder for a single numeric value.</li>
+            <li>In logic, a place-holder for a single element from the <em>Domain</em>, generally used with <em>Quantifiers</em> and <em>Predicates</em>.</li>
+            <li>In programming, a named region of memory that may take different values at different times.</li>
+            </ul>
+            </dd>
+            </dl>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

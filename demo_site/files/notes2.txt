@@ -1,0 +1,55 @@
+Review Session
+
+Recommendation for the cheat sheet
+One proof strategy
+Things that the professor wants me to know is not strictly def
+ 
+
+ 
+
+How to show a set is uncountable
+Def of uncountable
+A is uncountable |A| > |N|
+Two strategies
+Diagonalization
+Mapping(injection, etc)
+Mapping example(easier to use than diagonalization)
+3d in the practice exam
+I have any natural number of scoops. Each scoop is one of |N| flavors
+Want to show that this is uncountable
+Solution:
+ 
+
+Take a set B that I know is uncountable
+If I can find f: B --> A such that f is one-to-one, then |A| >= |B|
+Or the mapping is onto(A --> B)
+ 
+
+Set that is uncountable: set of all infinitely long binary strings --> we are gonna call this B
+C will be the set of all icecream scoops
+Find f: B --> C s.t. diff strings yield diff cones(I think he means scoop when he says cones)
+ 
+
+B1 = 0 0 0 1 0 1 1 0 …
+
+B2 = 0 0 0 1 0 0 1 0 …
+
+ 
+
+0 = vanilia
+
+1 = 1 chocolate
+
+ 
+
+If bit I is 1 then scoop I is chocolate, 0 --> vanilia
+
+ 
+
+How to know that different string gives different cones
+--> because the order is important --> there will be a bit somewhere that will be diff
+
+Let bit j be where they differ
+The cones will have a different flavors at scoop j so the cones are different
+So we have the injection between the infinitely long binary string and the scoops of ice cream so the set of scoops is uncountable
+

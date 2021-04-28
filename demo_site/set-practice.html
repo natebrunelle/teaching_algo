@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Practice problems with sets</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Practice problems with sets</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#membership"><span class="toc-section-number">1</span> Membership</a>
+        <ul>
+        <li><a href="#simple-membership"><span class="toc-section-number">1.1</span> Simple membership</a></li>
+        <li><a href="#qualified-membership"><span class="toc-section-number">1.2</span> Qualified membership</a></li>
+        </ul></li>
+        <li><a href="#comparison"><span class="toc-section-number">2</span> Comparison</a></li>
+        <li><a href="#listing-members-and-cardinality"><span class="toc-section-number">3</span> Listing members and cardinality</a></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+            <p>Assume the following definitions:</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">notation</th>
+            <th style="text-align: left;">meaning</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">\mathbb{Z}</span></td>
+            <td style="text-align: left;">The integers</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">\mathbb{Z}^{+}</span></td>
+            <td style="text-align: left;">The positive integers; i.e., <span class="math inline">\big\{ x \; \big| \; x \in \mathbb{Z} \land x &gt; 0 \big\}</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">\mathbb{N}</span></td>
+            <td style="text-align: left;">The natural numbers; i.e., <span class="math inline">\big\{ x \; \big| \; x \in \mathbb{Z} \land x \geq 0 \big\}</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">\mathbb{Z}^{-}</span></td>
+            <td style="text-align: left;">The negative integers; i.e., <span class="math inline">\big\{ x \; \big| \; x \in \mathbb{Z} \land x &lt; 0 \big\}</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">\mathbb{R}</span></td>
+            <td style="text-align: left;">The real numbers</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">\mathbb{Q}</span></td>
+            <td style="text-align: left;">The rational numbers; i.e., <span class="math inline">\Big\{ \frac{x}{y} \; \Big| \; x \in \mathbb{Z} \land y \in \mathbb{Z}^{+} \Big\}</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">\pi</span></td>
+            <td style="text-align: left;">The ratio of the circumference of a circle to its diameter; 3.1415926535…</td>
+            </tr>
+            </tbody>
+            </table>
+            <p>Assume that <span class="math inline">\mathbb Q^{+}</span>, <span class="math inline">\mathbb Q^{-}</span>, <span class="math inline">\mathbb R^{+}</span>, and <span class="math inline">\mathbb R^{-}</span> are defined similarly to <span class="math inline">\mathbb Z^{+}</span> and <span class="math inline">\mathbb Z^{-}</span>.</p>
+            <h1 data-number="1" id="membership" data-number="1"><span class="header-section-number">1</span> Membership</h1>
+            <h2 data-number="1.1" id="simple-membership" data-number="1.1"><span class="header-section-number">1.1</span> Simple membership</h2>
+            <p>Each of the following is either true or false; which one?</p>
+            <ul>
+            <li><p><span class="math inline">3 \in \mathbb Z</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+            <li><p><span class="math inline">3.5 \in \mathbb Z</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+            <li><p><span class="math inline">\pi \in \mathbb Z</span><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
+            <li><p><span class="math inline">3 \in \mathbb Q</span><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
+            <li><p><span class="math inline">3.5 \in \mathbb Q</span><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p></li>
+            <li><p><span class="math inline">\pi \in \mathbb Q</span><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p></li>
+            <li><p><span class="math inline">3 \in \mathbb R</span><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p></li>
+            <li><p><span class="math inline">3.5 \in \mathbb R</span><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p></li>
+            <li><p><span class="math inline">\pi \in \mathbb R</span><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p></li>
+            <li><p><span class="math inline">3 \in \big\{x + y \;\big|\; x,y \in \mathbb{Z}^{+} \land x &gt; y \big\}</span><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p></li>
+            <li><p><span class="math inline">3.5 \in \big\{x + y \;\big|\; x \in \mathbb{Z}^{+} \land y \in \mathbb{R}^{+} \big\}</span><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p></li>
+            <li><p><span class="math inline">0 \in \big\{x + y \;\big|\; x,y \in \mathbb{Z}^{+} \land x &gt; y \big\}</span><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p></li>
+            <li><p><span class="math inline">0 \in \big\{x - y \;\big|\; x,y \in \mathbb{R} \land x &gt; y \big\}</span><a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p></li>
+            <li><p><span class="math inline">3 \in \{\{1\}, \{2, 3\}, \{4, 5, 6\}\}</span><a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></p></li>
+            <li><p><span class="math inline">\{3\} \in \{\{1\}, \{2, 3\}, \{4, 5, 6\}\}</span><a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p></li>
+            <li><p><span class="math inline">\{2, 3\} \in \{\{1\}, \{2, 3\}, \{4, 5, 6\}\}</span><a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p></li>
+            <li><p><span class="math inline">\{2, 3\} \in \mathcal{P}\big(\{2, 3\}\big)</span><a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></p></li>
+            <li><p><span class="math inline">|\{2, 3\}| \in \{2, 3\}</span><a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a></p></li>
+            <li><p><span class="math inline">|\{2, 3\}| \in \mathcal{P}\big(\{2, 3\}\big)</span><a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p></li>
+            <li><p><span class="math inline">\infty \in \mathbb R</span><a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a></p></li>
+            </ul>
+            <h2 data-number="1.2" id="qualified-membership" data-number="1.2"><span class="header-section-number">1.2</span> Qualified membership</h2>
+            <p>Each of the following is either true or false; which one?</p>
+            <ul>
+            <li><span class="math inline">\forall x \in \mathbb R \;.\; x \in \mathbb Q</span><a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></li>
+            <li><span class="math inline">\forall x \in \mathbb Q \;.\; x \in \mathbb R</span><a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a></li>
+            <li><span class="math inline">\forall x \in \mathbb Z^{+} \;.\; \exists y \in \mathbb Z^{-} \;.\; x + y = 0</span><a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></li>
+            <li><span class="math inline">\forall x \in \mathbb R^{+} \;.\; \exists y \in \mathbb Z^{+} \;.\; 1 \leq \frac{x}{y} \leq 2</span><a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></li>
+            <li><span class="math inline">\exists x \in \mathbb R \;.\; x \in \mathbb N</span><a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a></li>
+            <li><span class="math inline">\exists x \in \mathbb R^{+} \;.\; x \notin \mathbb Q^{+}</span><a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a></li>
+            <li><span class="math inline">\exists x,y \in (\mathbb R \setminus \mathbb N) \;.\; (x \neq y) \land \big((x - y) \in \mathbb N\big)</span><a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a></li>
+            <li><span class="math inline">\forall x \in \mathbb R \;.\; (x \in \mathbb N) \rightarrow (x \in \mathbb Z)</span><a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a></li>
+            <li><span class="math inline">\forall x \in \mathbb Z \;.\; (x \in \mathbb Z^{+}) \lor (x \in \mathbb Z^{-})</span><a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a></li>
+            <li><span class="math inline">\forall x \in \mathbb N \;.\; (x &lt; 0) \rightarrow \bot</span><a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></li>
+            <li><span class="math inline">\forall x \in \mathbb N \;.\; x \in \big\{ \lfloor y \rfloor \;\big|\; y \in \mathbb R^{+} \big\}</span><a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a></li>
+            <li><span class="math inline">\forall x \in \mathbb N \;.\; x + 1 \in \mathbb N</span><a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a></li>
+            <li><span class="math inline">\forall S \in \{\mathbb Z, \mathbb Q, \mathbb R\}\;.\; \forall x \in S \;.\; x + 1 \in S</span><a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a></li>
+            <li><span class="math inline">\forall x \in \{3, 1, 4, 5\} \;.\; x^{x} \in \{0, 1, 4, 27, 256, 3125, 46656\}</span><a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a></li>
+            <li><span class="math inline">0 \in \big\{x \;\big|\; \exists y \in \mathbb Z \;.\; y^{y} = x \big\}</span><a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a></li>
+            <li><span class="math inline">\Big|\big\{ x \;\big|\; (x \in \mathbb R) \land (\forall y \in \mathbb N \;.\; x &gt; y) \big\}\Big| \in \{0,1,2\}</span><a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a></li>
+            <li><span class="math inline">8 \in \big\{x^3 \;\big|\; \exists y \in \mathbb Z \;.\; y^2 = x \big\}</span><a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a></li>
+            <li><span class="math inline">1 \in \big\{x^3 \;\big|\; \exists y \in \mathbb Z \;.\; y^2 = x \big\}</span><a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a></li>
+            <li><span class="math inline">64 \in \big\{x^3 \;\big|\; \exists y \in \mathbb Z \;.\; y^2 = x \big\}</span><a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a></li>
+            </ul>
+            <p>A set is said to be <strong>closed over</strong> an operation if applying that operation to members of the set always results in another member of that set.</p>
+            <ul>
+            <li>Which (if any, or all) of the following operators is <span class="math inline">\mathbb Z</span> closed over?
+            <ul>
+            <li><lable><input type="checkbox"></input> addition (<span class="math inline">+</span>)</label><a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a></li>
+            <li><lable><input type="checkbox"></input> subtraction (<span class="math inline">-</span>)</label><a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a></li>
+            <li><lable><input type="checkbox"></input> multiplication (<span class="math inline">\times</span>)</label><a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a></li>
+            <li><lable><input type="checkbox"></input> division (<span class="math inline">\div</span>)</label><a href="#fn43" class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a></li>
+            <li><lable><input type="checkbox"></input> modulo (<span class="math inline">\mod{}</span> in math, <code>%</code> in code)</label><a href="#fn44" class="footnote-ref" id="fnref44" role="doc-noteref"><sup>44</sup></a></li>
+            <li><lable><input type="checkbox"></input> root extraction (<span class="math inline">\sqrt{}</span>)</label><a href="#fn45" class="footnote-ref" id="fnref45" role="doc-noteref"><sup>45</sup></a></li>
+            </ul></li>
+            <li>Which (if any, or all) of the following operators is <span class="math inline">\mathbb N</span> closed over?
+            <ul>
+            <li><lable><input type="checkbox"></input> addition (<span class="math inline">+</span>)</label><a href="#fn46" class="footnote-ref" id="fnref46" role="doc-noteref"><sup>46</sup></a></li>
+            <li><lable><input type="checkbox"></input> subtraction (<span class="math inline">-</span>)</label><a href="#fn47" class="footnote-ref" id="fnref47" role="doc-noteref"><sup>47</sup></a></li>
+            <li><lable><input type="checkbox"></input> multiplication (<span class="math inline">\times</span>)</label><a href="#fn48" class="footnote-ref" id="fnref48" role="doc-noteref"><sup>48</sup></a></li>
+            <li><lable><input type="checkbox"></input> division (<span class="math inline">\div</span>)</label><a href="#fn49" class="footnote-ref" id="fnref49" role="doc-noteref"><sup>49</sup></a></li>
+            <li><lable><input type="checkbox"></input> modulo (<span class="math inline">\mod{}</span> in math, <code>%</code> in code)</label><a href="#fn50" class="footnote-ref" id="fnref50" role="doc-noteref"><sup>50</sup></a></li>
+            <li><lable><input type="checkbox"></input> root extraction (<span class="math inline">\sqrt{}</span>)</label><a href="#fn51" class="footnote-ref" id="fnref51" role="doc-noteref"><sup>51</sup></a></li>
+            </ul></li>
+            <li>Which (if any, or all) of the following operators is <span class="math inline">\mathbb R^{-}</span> closed over?
+            <ul>
+            <li><lable><input type="checkbox"></input> addition (<span class="math inline">+</span>)</label><a href="#fn52" class="footnote-ref" id="fnref52" role="doc-noteref"><sup>52</sup></a></li>
+            <li><lable><input type="checkbox"></input> subtraction (<span class="math inline">-</span>)</label><a href="#fn53" class="footnote-ref" id="fnref53" role="doc-noteref"><sup>53</sup></a></li>
+            <li><lable><input type="checkbox"></input> multiplication (<span class="math inline">\times</span>)</label><a href="#fn54" class="footnote-ref" id="fnref54" role="doc-noteref"><sup>54</sup></a></li>
+            <li><lable><input type="checkbox"></input> division (<span class="math inline">\div</span>)</label><a href="#fn55" class="footnote-ref" id="fnref55" role="doc-noteref"><sup>55</sup></a></li>
+            <li><lable><input type="checkbox"></input> modulo (<span class="math inline">\mod{}</span> in math, <code>%</code> in code)</label><a href="#fn56" class="footnote-ref" id="fnref56" role="doc-noteref"><sup>56</sup></a></li>
+            <li><lable><input type="checkbox"></input> root extraction (<span class="math inline">\sqrt{}</span>)</label><a href="#fn57" class="footnote-ref" id="fnref57" role="doc-noteref"><sup>57</sup></a></li>
+            </ul></li>
+            <li>Which (if any, or all) of the following operators is <span class="math inline">\mathbb Q</span> closed over?
+            <ul>
+            <li><lable><input type="checkbox"></input> addition (<span class="math inline">+</span>)</label><a href="#fn58" class="footnote-ref" id="fnref58" role="doc-noteref"><sup>58</sup></a></li>
+            <li><lable><input type="checkbox"></input> subtraction (<span class="math inline">-</span>)</label><a href="#fn59" class="footnote-ref" id="fnref59" role="doc-noteref"><sup>59</sup></a></li>
+            <li><lable><input type="checkbox"></input> multiplication (<span class="math inline">\times</span>)</label><a href="#fn60" class="footnote-ref" id="fnref60" role="doc-noteref"><sup>60</sup></a></li>
+            <li><lable><input type="checkbox"></input> division (<span class="math inline">\div</span>)</label><a href="#fn61" class="footnote-ref" id="fnref61" role="doc-noteref"><sup>61</sup></a></li>
+            <li><lable><input type="checkbox"></input> modulo (<span class="math inline">\mod{}</span> in math, <code>%</code> in code)</label><a href="#fn62" class="footnote-ref" id="fnref62" role="doc-noteref"><sup>62</sup></a></li>
+            <li><lable><input type="checkbox"></input> root extraction (<span class="math inline">\sqrt{}</span>)</label><a href="#fn63" class="footnote-ref" id="fnref63" role="doc-noteref"><sup>63</sup></a></li>
+            </ul></li>
+            <li>Which (if any, or all) of the following operators is <span class="math inline">\mathbb Q \setminus \{0\}</span> closed over?
+            <ul>
+            <li><lable><input type="checkbox"></input> addition (<span class="math inline">+</span>)</label><a href="#fn64" class="footnote-ref" id="fnref64" role="doc-noteref"><sup>64</sup></a></li>
+            <li><lable><input type="checkbox"></input> subtraction (<span class="math inline">-</span>)</label><a href="#fn65" class="footnote-ref" id="fnref65" role="doc-noteref"><sup>65</sup></a></li>
+            <li><lable><input type="checkbox"></input> multiplication (<span class="math inline">\times</span>)</label><a href="#fn66" class="footnote-ref" id="fnref66" role="doc-noteref"><sup>66</sup></a></li>
+            <li><lable><input type="checkbox"></input> division (<span class="math inline">\div</span>)</label><a href="#fn67" class="footnote-ref" id="fnref67" role="doc-noteref"><sup>67</sup></a></li>
+            <li><lable><input type="checkbox"></input> modulo (<span class="math inline">\mod{}</span> in math, <code>%</code> in code)</label><a href="#fn68" class="footnote-ref" id="fnref68" role="doc-noteref"><sup>68</sup></a></li>
+            <li><lable><input type="checkbox"></input> root extraction (<span class="math inline">\sqrt{}</span>)</label><a href="#fn69" class="footnote-ref" id="fnref69" role="doc-noteref"><sup>69</sup></a></li>
+            </ul></li>
+            <li>Which (if any, or all) of the following operators is <span class="math inline">\mathbb R</span> closed over?
+            <ul>
+            <li><lable><input type="checkbox"></input> addition (<span class="math inline">+</span>)</label><a href="#fn70" class="footnote-ref" id="fnref70" role="doc-noteref"><sup>70</sup></a></li>
+            <li><lable><input type="checkbox"></input> subtraction (<span class="math inline">-</span>)</label><a href="#fn71" class="footnote-ref" id="fnref71" role="doc-noteref"><sup>71</sup></a></li>
+            <li><lable><input type="checkbox"></input> multiplication (<span class="math inline">\times</span>)</label><a href="#fn72" class="footnote-ref" id="fnref72" role="doc-noteref"><sup>72</sup></a></li>
+            <li><lable><input type="checkbox"></input> division (<span class="math inline">\div</span>)</label><a href="#fn73" class="footnote-ref" id="fnref73" role="doc-noteref"><sup>73</sup></a></li>
+            <li><lable><input type="checkbox"></input> modulo (<span class="math inline">\mod{}</span> in math, <code>%</code> in code)</label><a href="#fn74" class="footnote-ref" id="fnref74" role="doc-noteref"><sup>74</sup></a></li>
+            <li><lable><input type="checkbox"></input> root extraction (<span class="math inline">\sqrt{}</span>)</label><a href="#fn75" class="footnote-ref" id="fnref75" role="doc-noteref"><sup>75</sup></a></li>
+            </ul></li>
+            </ul>
+            <h1 data-number="2" id="comparison" data-number="2"><span class="header-section-number">2</span> Comparison</h1>
+            <p>For each of the following, fill in the blank with the first element of the following list that applies:</p>
+            <ul>
+            <li><span class="math inline">=</span> if the two are identical; otherwise</li>
+            <li><span class="math inline">\subset</span> or <span class="math inline">\supset</span> if those are true; otherwise</li>
+            <li><span class="math inline">\subseteq</span> or <span class="math inline">\supseteq</span> if those are true; otherwise</li>
+            <li><q>disjoint</q> if the intersection of the two is <span class="math inline">\emptyset</span>; otherwise</li>
+            <li><span class="math inline">\neq</span></li>
+            </ul>
+            <table>
+            <colgroup>
+            
+            
+            
+            </colgroup>
+            <thead>
+            <tr class="header">
+            <th>Set 1</th>
+            <th> </th>
+            <th>Set 2</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td><span class="math inline">\mathbb R</span></td>
+            <td><input></input><a href="#fn76" class="footnote-ref" id="fnref76" role="doc-noteref"><sup>76</sup></a></td>
+            <td><span class="math inline">\mathbb Q</span></td>
+            </tr>
+            <tr class="even">
+            <td><span class="math inline">\mathbb N</span></td>
+            <td><input></input><a href="#fn77" class="footnote-ref" id="fnref77" role="doc-noteref"><sup>77</sup></a></td>
+            <td><span class="math inline">\mathbb Z^{+}</span></td>
+            </tr>
+            <tr class="odd">
+            <td>even numbers</td>
+            <td><input></input><a href="#fn78" class="footnote-ref" id="fnref78" role="doc-noteref"><sup>78</sup></a></td>
+            <td>odd numbers</td>
+            </tr>
+            <tr class="even">
+            <td>prime numbers</td>
+            <td><input></input><a href="#fn79" class="footnote-ref" id="fnref79" role="doc-noteref"><sup>79</sup></a></td>
+            <td>odd numbers</td>
+            </tr>
+            <tr class="odd">
+            <td><span class="math inline">\{1, 3, 5\}</span></td>
+            <td><input></input><a href="#fn80" class="footnote-ref" id="fnref80" role="doc-noteref"><sup>80</sup></a></td>
+            <td><span class="math inline">\{\{1\}, \{3\}, \{5\}\}</span></td>
+            </tr>
+            <tr class="even">
+            <td><span class="math inline">\{1, 3, 5\}</span></td>
+            <td><input></input><a href="#fn81" class="footnote-ref" id="fnref81" role="doc-noteref"><sup>81</sup></a></td>
+            <td><span class="math inline">\{5, 3, 1\}</span></td>
+            </tr>
+            <tr class="odd">
+            <td><span class="math inline">\{1, 3, 5\}</span></td>
+            <td><input></input><a href="#fn82" class="footnote-ref" id="fnref82" role="doc-noteref"><sup>82</sup></a></td>
+            <td><span class="math inline">\{5, 3\}</span></td>
+            </tr>
+            <tr class="even">
+            <td><span class="math inline">\{0, 1\}</span></td>
+            <td><input></input><a href="#fn83" class="footnote-ref" id="fnref83" role="doc-noteref"><sup>83</sup></a></td>
+            <td><span class="math inline">\big\{ x \;\big|\; x \in \mathbb{R} \land x^2 = x\big\}</span></td>
+            </tr>
+            <tr class="odd">
+            <td><span class="math inline">\mathbb{N}</span></td>
+            <td><input></input><a href="#fn84" class="footnote-ref" id="fnref84" role="doc-noteref"><sup>84</sup></a></td>
+            <td><span class="math inline">\Big\{ x \;\Big|\; x \in \mathbb{R}^{+} \land \big(x - \lfloor x \rfloor = 0\big)\Big\}</span></td>
+            </tr>
+            <tr class="even">
+            <td>even numbers</td>
+            <td><input></input><a href="#fn85" class="footnote-ref" id="fnref85" role="doc-noteref"><sup>85</sup></a></td>
+            <td><span class="math inline">\big\{x \;\big|\; \exists y \in \mathbb Z \;.\; 2y = x\big\}</span></td>
+            </tr>
+            <tr class="odd">
+            <td><span class="math inline">\mathbb R \setminus \mathbb Z</span></td>
+            <td><input></input><a href="#fn86" class="footnote-ref" id="fnref86" role="doc-noteref"><sup>86</sup></a></td>
+            <td><span class="math inline">\Big\{ x \;\Big|\; (x \in \mathbb R) \land \big(\forall y \in \mathbb Z \;.\; x \neq y\big) \Big\}</span></td>
+            </tr>
+            <tr class="even">
+            <td><span class="math inline">\mathbb R \setminus \mathbb Z</span></td>
+            <td><input></input><a href="#fn87" class="footnote-ref" id="fnref87" role="doc-noteref"><sup>87</sup></a></td>
+            <td><span class="math inline">\mathbb R \setminus \mathbb Q</span></td>
+            </tr>
+            <tr class="odd">
+            <td><span class="math inline">\mathbb Q \setminus \mathbb Z</span></td>
+            <td><input></input><a href="#fn88" class="footnote-ref" id="fnref88" role="doc-noteref"><sup>88</sup></a></td>
+            <td><span class="math inline">\{1, 2, 4\}</span></td>
+            </tr>
+            <tr class="even">
+            <td><span class="math inline">\emptyset</span></td>
+            <td><input></input><a href="#fn89" class="footnote-ref" id="fnref89" role="doc-noteref"><sup>89</sup></a></td>
+            <td><span class="math inline">\mathcal{P}(\emptyset)</span></td>
+            </tr>
+            <tr class="odd">
+            <td><span class="math inline">\{1\}</span></td>
+            <td><input></input><a href="#fn90" class="footnote-ref" id="fnref90" role="doc-noteref"><sup>90</sup></a></td>
+            <td><span class="math inline">\mathcal{P}(\{1\})</span></td>
+            </tr>
+            <tr class="even">
+            <td><span class="math inline">R^{+} \cup \{0\}</span></td>
+            <td><input></input><a href="#fn91" class="footnote-ref" id="fnref91" role="doc-noteref"><sup>91</sup></a></td>
+            <td><span class="math inline">\big\{ x \;\big|\; x \in \mathbb R \land \sqrt{x^2} = x \big\}</span></td>
+            </tr>
+            </tbody>
+            </table>
+            <h1 data-number="3" id="listing-members-and-cardinality" data-number="3"><span class="header-section-number">3</span> Listing members and cardinality</h1>
+            <p>For each of the following, list the members of the set:</p>
+            <ul>
+            <li><span class="math inline">\big\{\frac{x}{y} \;\big|\; x\in\{0,1,2\} \land y\in\{1,2,4\} \big\}</span><a href="#fn92" class="footnote-ref" id="fnref92" role="doc-noteref"><sup>92</sup></a></li>
+            <li><span class="math inline">\mathcal P \big(\mathcal P(\emptyset)\big)</span><a href="#fn93" class="footnote-ref" id="fnref93" role="doc-noteref"><sup>93</sup></a></li>
+            <li><span class="math inline">\mathcal P \Big(\mathcal P \big(\mathcal P(\emptyset)\big)\Big)</span><a href="#fn94" class="footnote-ref" id="fnref94" role="doc-noteref"><sup>94</sup></a></li>
+            <li><span class="math inline">\Big\{ x + y \;\Big|\; (x,y \in \mathbb Z) \land (1 &lt; x &lt; y &lt; 10)</span> <span class="math inline">\land</span> <span class="math inline">\big(\forall w \in \mathbb Z^{+} \setminus \{1\} \;.\; (x \neq w \rightarrow 0 \neq x \mod{w}) \land (y \neq w \rightarrow 0 \neq y \mod{w}) \big) \Big\}</span><a href="#fn95" class="footnote-ref" id="fnref95" role="doc-noteref"><sup>95</sup></a></li>
+            <li>Assume that <span class="math inline">A = \{1,2,3,4,5\}</span> and <span class="math inline">B = \{2,3,5,7\}</span>; <span class="math inline">\big\{ x \;\big|\; (x \in A) \oplus (x \in B) \big\}</span><a href="#fn96" class="footnote-ref" id="fnref96" role="doc-noteref"><sup>96</sup></a></li>
+            <li>Assume that <span class="math inline">A = \{25,0,1\}</span>; <span class="math inline">A \cup \mathcal P(A)</span><a href="#fn97" class="footnote-ref" id="fnref97" role="doc-noteref"><sup>97</sup></a></li>
+            <li>Assume that <span class="math inline">A</span> is the set of all 2-digit numbers; <span class="math inline">|\mathcal{P}(A)|</span><a href="#fn98" class="footnote-ref" id="fnref98" role="doc-noteref"><sup>98</sup></a></li>
+            <li>Assume that <span class="math inline">A</span> is the set of all 2-digit numbers; <span class="math inline">|\mathcal{P}(A) \cap A|</span><a href="#fn99" class="footnote-ref" id="fnref99" role="doc-noteref"><sup>99</sup></a></li>
+            <li>Assume that <span class="math inline">A</span> is the set of all 2-digit numbers; <span class="math inline">|\mathcal{P}(A) \cup A|</span><a href="#fn100" class="footnote-ref" id="fnref100" role="doc-noteref"><sup>100</sup></a></li>
+            </ul>
+            <section class="footnotes" role="doc-endnotes">
+            <hr />
+            <ol>
+            <li id="fn1" role="doc-endnote"><p>true<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn2" role="doc-endnote"><p>false<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn3" role="doc-endnote"><p>false<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn4" role="doc-endnote"><p>true<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn5" role="doc-endnote"><p>true<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn6" role="doc-endnote"><p>false<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn7" role="doc-endnote"><p>true<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn8" role="doc-endnote"><p>true<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn9" role="doc-endnote"><p>true<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn10" role="doc-endnote"><p>true<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn11" role="doc-endnote"><p>true<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn12" role="doc-endnote"><p>false<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn13" role="doc-endnote"><p>false<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn14" role="doc-endnote"><p>false<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn15" role="doc-endnote"><p>false<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn16" role="doc-endnote"><p>true<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn17" role="doc-endnote"><p>true<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn18" role="doc-endnote"><p>true<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn19" role="doc-endnote"><p>false<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn20" role="doc-endnote"><p>false<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn21" role="doc-endnote"><p>false<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn22" role="doc-endnote"><p>true<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn23" role="doc-endnote"><p>true<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn24" role="doc-endnote"><p>false (consider 0.00001)<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn25" role="doc-endnote"><p>true<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn26" role="doc-endnote"><p>true<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn27" role="doc-endnote"><p>true<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn28" role="doc-endnote"><p>true<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn29" role="doc-endnote"><p>false<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn30" role="doc-endnote"><p>true<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn31" role="doc-endnote"><p>true<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn32" role="doc-endnote"><p>true<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn33" role="doc-endnote"><p>true<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn34" role="doc-endnote"><p>true<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn35" role="doc-endnote"><p>false<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn36" role="doc-endnote"><p>true<a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn37" role="doc-endnote"><p>false<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn38" role="doc-endnote"><p>true<a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn39" role="doc-endnote"><p>true<a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn40" role="doc-endnote"><p>true<a href="#fnref40" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn41" role="doc-endnote"><p>true<a href="#fnref41" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn42" role="doc-endnote"><p>true<a href="#fnref42" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn43" role="doc-endnote"><p>false<a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn44" role="doc-endnote"><p>mostly true, except for 0 divisors<a href="#fnref44" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn45" role="doc-endnote"><p>false<a href="#fnref45" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn46" role="doc-endnote"><p>true<a href="#fnref46" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn47" role="doc-endnote"><p>false<a href="#fnref47" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn48" role="doc-endnote"><p>true<a href="#fnref48" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn49" role="doc-endnote"><p>false<a href="#fnref49" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn50" role="doc-endnote"><p>mostly true, except for 0 divisors<a href="#fnref50" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn51" role="doc-endnote"><p>false<a href="#fnref51" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn52" role="doc-endnote"><p>true<a href="#fnref52" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn53" role="doc-endnote"><p>false<a href="#fnref53" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn54" role="doc-endnote"><p>false<a href="#fnref54" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn55" role="doc-endnote"><p>false<a href="#fnref55" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn56" role="doc-endnote"><p>false<a href="#fnref56" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn57" role="doc-endnote"><p>false<a href="#fnref57" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn58" role="doc-endnote"><p>true<a href="#fnref58" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn59" role="doc-endnote"><p>true<a href="#fnref59" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn60" role="doc-endnote"><p>true<a href="#fnref60" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn61" role="doc-endnote"><p>mostly true, except for 0 divisors<a href="#fnref61" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn62" role="doc-endnote"><p>mostly true, except for 0 divisors<a href="#fnref62" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn63" role="doc-endnote"><p>false<a href="#fnref63" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn64" role="doc-endnote"><p>false<a href="#fnref64" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn65" role="doc-endnote"><p>false<a href="#fnref65" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn66" role="doc-endnote"><p>true<a href="#fnref66" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn67" role="doc-endnote"><p>true<a href="#fnref67" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn68" role="doc-endnote"><p>false<a href="#fnref68" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn69" role="doc-endnote"><p>false<a href="#fnref69" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn70" role="doc-endnote"><p>true<a href="#fnref70" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn71" role="doc-endnote"><p>true<a href="#fnref71" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn72" role="doc-endnote"><p>true<a href="#fnref72" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn73" role="doc-endnote"><p>mostly true, except for 0 divisors<a href="#fnref73" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn74" role="doc-endnote"><p>mostly true, except for 0 divisors<a href="#fnref74" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn75" role="doc-endnote"><p>false because <span class="math inline">\mathbb R</span> contains negative numbers<a href="#fnref75" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn76" role="doc-endnote"><p><span class="math inline">\supset</span><a href="#fnref76" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn77" role="doc-endnote"><p><span class="math inline">\supset</span><a href="#fnref77" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn78" role="doc-endnote"><p>disjoint<a href="#fnref78" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn79" role="doc-endnote"><p><span class="math inline">\neq</span><a href="#fnref79" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn80" role="doc-endnote"><p>disjoint<a href="#fnref80" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn81" role="doc-endnote"><p>=<a href="#fnref81" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn82" role="doc-endnote"><p><span class="math inline">\supset</span><a href="#fnref82" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn83" role="doc-endnote"><p>=<a href="#fnref83" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn84" role="doc-endnote"><p><span class="math inline">\supset</span> (would be = if <span class="math inline">\mathbb Z^{+}</span> instead of <span class="math inline">\mathbb N</span><a href="#fnref84" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn85" role="doc-endnote"><p>=<a href="#fnref85" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn86" role="doc-endnote"><p>=<a href="#fnref86" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn87" role="doc-endnote"><p><span class="math inline">\supset</span><a href="#fnref87" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn88" role="doc-endnote"><p>disjoint<a href="#fnref88" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn89" role="doc-endnote"><p><span class="math inline">\subset</span><a href="#fnref89" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn90" role="doc-endnote"><p>disjoint<a href="#fnref90" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn91" role="doc-endnote"><p>=<a href="#fnref91" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn92" role="doc-endnote"><p><span class="math inline">\big\{0, \frac{1}{4}, \frac{1}{2}, 1, 2\big\}</span><a href="#fnref92" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn93" role="doc-endnote"><p><span class="math inline">\Big\{ \{\}, \big\{\{\}\big\} \Big\}</span><a href="#fnref93" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn94" role="doc-endnote"><p><span class="math inline">\bigg\{ \{\}, \big\{\{\}\big\}, \Big\{\big\{\{\}\big\}\Big\}, \Big\{\{\}, \big\{\{\}\big\}\Big\} \bigg\}</span><a href="#fnref94" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn95" role="doc-endnote"><p><span class="math inline">\{5,7,8,9,10,12\}</span><a href="#fnref95" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn96" role="doc-endnote"><p>{1, 4, 7}<a href="#fnref96" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn97" role="doc-endnote"><p>{25, 0, 1, , {25}, {0}, {1}, {25,0}, {25,1}, {25,0,1}}<a href="#fnref97" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn98" role="doc-endnote"><p><span class="math inline">2^{90}</span> which is 1,237,940,039,285,380,274,899,124,224<a href="#fnref98" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn99" role="doc-endnote"><p><span class="math inline">0</span><a href="#fnref99" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            <li id="fn100" role="doc-endnote"><p><span class="math inline">2^{90}+90</span> which is 1,237,940,039,285,380,274,899,124,314<a href="#fnref100" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+            </ol>
+            </section>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

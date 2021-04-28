@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Symbols we’ll use</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Symbols we’ll use</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div class="span12">
+            <p>You have enough to worry about memorizing without keeping dozens of symbols in your head at once. We intend to provide this table for your reference during every in-class evaluation.</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">Concept</th>
+            <th style="text-align: center;">Java/C</th>
+            <th style="text-align: center;">Python</th>
+            <th style="text-align: center;">This class</th>
+            <th style="text-align: center;">Bitwise</th>
+            <th style="text-align: left;">Other</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;">true</td>
+            <td style="text-align: center;"><code>true</code></td>
+            <td style="text-align: center;"><code>True</code></td>
+            <td style="text-align: center;"><span class="math inline">\top</span> or <span class="math inline">1</span></td>
+            <td style="text-align: center;"><code>-1</code></td>
+            <td style="text-align: left;">T, tautology</td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">false</td>
+            <td style="text-align: center;"><code>false</code></td>
+            <td style="text-align: center;"><code>False</code></td>
+            <td style="text-align: center;"><span class="math inline">\bot</span> or <span class="math inline">0</span></td>
+            <td style="text-align: center;"><code>0</code></td>
+            <td style="text-align: left;">F, contradiction</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">not <span class="math inline">P</span></td>
+            <td style="text-align: center;"><code>!p</code></td>
+            <td style="text-align: center;"><code>not p</code></td>
+            <td style="text-align: center;"><span class="math inline">\lnot P</span> or <span class="math inline">\overline{P}</span></td>
+            <td style="text-align: center;"><code>~p</code></td>
+            <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">P</span> and <span class="math inline">Q</span></td>
+            <td style="text-align: center;"><code>p &amp;&amp; q</code></td>
+            <td style="text-align: center;"><code>p and q</code></td>
+            <td style="text-align: center;"><span class="math inline">P \land Q</span></td>
+            <td style="text-align: center;"><code>p &amp; q</code></td>
+            <td style="text-align: left;"><span class="math inline">P Q</span>, <span class="math inline">P \cdot Q</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">P</span> or <span class="math inline">Q</span></td>
+            <td style="text-align: center;"><code>p || q</code></td>
+            <td style="text-align: center;"><code>p or q</code></td>
+            <td style="text-align: center;"><span class="math inline">P \lor Q</span></td>
+            <td style="text-align: center;"><code>p | q</code></td>
+            <td style="text-align: left;"><span class="math inline">P + Q</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">P</span> xor <span class="math inline">Q</span></td>
+            <td style="text-align: center;"><code>p != q</code></td>
+            <td style="text-align: center;"><code>p != q</code></td>
+            <td style="text-align: center;"><span class="math inline">P \oplus Q</span></td>
+            <td style="text-align: center;"><code>p ^ q</code></td>
+            <td style="text-align: left;"><span class="math inline">P ⊻ Q</span></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;"><span class="math inline">P</span> implies <span class="math inline">Q</span></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"><span class="math inline">P \rightarrow Q</span></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: left;"><span class="math inline">P \supset Q</span>, <span class="math inline">P \Rightarrow Q</span></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;"><span class="math inline">P</span> iff <span class="math inline">Q</span></td>
+            <td style="text-align: center;"><code>p == q</code></td>
+            <td style="text-align: center;"><code>p == q</code></td>
+            <td style="text-align: center;"><span class="math inline">P \leftrightarrow Q</span></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: left;"><span class="math inline">P \Leftrightarrow Q</span>, <span class="math inline">P</span> xnor <span class="math inline">Q</span>, <span class="math inline">P \equiv Q</span></td>
+            </tr>
+            </tbody>
+            </table>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: left;">Concept</th>
+            <th style="text-align: center;">Symbol</th>
+            <th style="text-align: left;">Meaning</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: left;">equivalent</td>
+            <td style="text-align: center;"><span class="math inline">\equiv</span></td>
+            <td style="text-align: left;"><q><span class="math inline">A \equiv B</span></q> means <q><span class="math inline">A \leftrightarrow B</span> is a tautology</q></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">entails</td>
+            <td style="text-align: center;"><span class="math inline">\vDash</span></td>
+            <td style="text-align: left;"><q><span class="math inline">A \vDash B</span></q> means <q><span class="math inline">A \rightarrow B</span> is a tautology</q></td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: left;">provable</td>
+            <td style="text-align: center;"><span class="math inline">\vdash</span></td>
+            <td style="text-align: left;"><q><span class="math inline">A \vdash B</span></q> means both <q><span class="math inline">A \vDash B</span></q> and <q>I know <span class="math inline">B</span> is true because <span class="math inline">A</span> is true</q><br/><q><span class="math inline">\vdash B</span></q> (i.e., without <span class="math inline">A</span>) means <q>I know <span class="math inline">B</span> is true</q></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: left;">therefore</td>
+            <td style="text-align: center;"><span class="math inline">\therefore</span></td>
+            <td style="text-align: left;"><q><span class="math inline">\therefore A</span></q> means both <q><span class="math inline">\vdash A</span></q> and <q><span class="math inline">A</span> is the thing we wanted to show</q></td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

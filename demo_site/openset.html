@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Open Sets</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <style type="text/css">.katex { font-size: inherit; }</style>
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Open Sets</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#lack-of-largest-and-smallest-values"><span class="toc-section-number">1</span> Lack of largest and smallest values</a></li>
+        <li><a href="#open-sets"><span class="toc-section-number">2</span> Open Sets</a></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+            <p>This document has several goals. First, it discusses a few ideas you should probably be familiar with, including limitations on well-ordering and inductive proofs. Second, it provides several examples of proof by contradiction. Third, it gives an opportunity to discuss several proof style topics such as levels of detail, how to present multiple poofs of similar structure, and the somewhat controversial phrase <q><em>mutatis mutandis</em></q>.</p>
+            <h1 data-number="1" id="lack-of-largest-and-smallest-values" data-number="1"><span class="header-section-number">1</span> Lack of largest and smallest values</h1>
+            <div class="theorem">
+            <p>There is no smallest rational number larger than 0. That is, <span class="math display">\forall n_1 \in \mathbb Q^{+} \;.\; \exists n_2 \in \mathbb Q^{+} \;.\; n_2 &lt; n_1</span></p>
+            </div>
+            <div class="proof">
+            <p>We proceed by contradiction.</p>
+            <p>Assume <span class="math display">\lnot\Big( \forall n_1 \in \mathbb Q^{+} \;.\; \exists n_2 \in \mathbb Q^{+} \;.\; n_2 &lt; n_1 \Big)</span> Applying equivalence rules, that is the same as assuming <span class="math display">\exists n_1 \in \mathbb Q^{+} \;.\; \nexists n_2 \in \mathbb Q^{+} \;.\; n_2 &lt; n_1</span> Let <span class="math inline">n</span> be one such <span class="math inline">n_1</span>. Consider <span class="math inline">m = \frac{n}{2}</span>. Because <span class="math inline">n \in \mathbb Q^{+}</span>, <span class="math inline">n</span> is positive; because <span class="math inline">2 &gt; 1</span>, we have <span class="math inline">0 &lt; m &lt; n</span>. Because <span class="math inline">n \in \mathbb Q^{+}</span>, <span class="math inline">n</span> is rational, and the division of two rational numbers is rational, so <span class="math inline">m</span> must be rational, and because <span class="math inline">0 &lt; m</span> we have <span class="math inline">m \in \mathbb Q^{+}</span>. But that contradicts our assumption that <span class="math inline">\nexists n_2 \in \mathbb Q^{+} \;.\; n_2 &lt; n</span>.</p>
+            <p>Because our assumption led to a contradiction, our assumption must be false; that is, <span class="math display">\forall n_1 \in \mathbb Q^{+} \;.\; \exists n_2 \in \mathbb Q^{+} \;.\; n_2 &lt; n_1</span> must be true.</p>
+            </div>
+            <p>Using this theorem, we can prove two related more general corollaries:</p>
+            <div class="corollary">
+            <p>For any rational number, there is no smallest rational number larger than it. That is, <span class="math display">
+            \forall q, n_1 \in \mathbb Q \;.\; n_1 &gt; q \rightarrow \exists n_2 \in \mathbb Q \;.\; q &lt; n_2 &lt; n_1</span></p>
+            </div>
+            <div class="proof">
+            <p>We proceed by contradiction.</p>
+            <p>Suppose there was some <span class="math inline">q</span> for which corollary 1 was false. Let <span class="math inline">q_0</span> be the smallest element of <span class="math inline">\mathbb Q</span> larger than <span class="math inline">q</span>. Then <span class="math inline">q_0-q</span> must be the smallest elements of <span class="math inline">\mathbb Q^{+}</span>. But we know from theorem 1 that there is no smallest element of <span class="math inline">\mathbb Q^{+}</span>. Thus, our supposition must be false, meaning corollary 1 must be true.</p>
+            </div>
+            <div class="aside long">
+            <p>Note the far less formal approach of the proof of corollary 1 compared to the proof of theorem 1. There is no one right level of formality for proofs, but often if one proof largely looks like another we try to present it more briefly than the first, assuming the reader can use the formality of the first as a template for expanding the second if they are so inclined.</p>
+            <p>Of course, sometimes we are wrong about how comfortable the reader will be with brevity. But if we wrote it out in full sometimes we’d be wrong about how happy they’d be with that full detail too. Guessing the mind of the reader if part of the risk associated with any creative language art, even very specialized ones like proof writing.</p>
+            <p>We use an even briefer approach in the next proof.</p>
+
+            </div>
+            <div class="corollary">
+            <p>For any rational number, there is no largest rational number smaller than it. That is, <span class="math display">
+            \forall q, n_1 \in \mathbb Q \;.\; n_1 &lt; q \rightarrow \exists n_2 \in \mathbb Q \;.\; n_1 &lt; n_2 &lt; q</span></p>
+            </div>
+            <div class="proof">
+            <p>We proceed by contradiction.</p>
+            <p>Suppose there was some <span class="math inline">q</span> and <span class="math inline">n_1</span> for which corollary 2 was false. Then <span class="math inline">-q</span> and <span class="math inline">-n_1</span> would make corollary 1 false, which it is not. Thus, there are no such <span class="math inline">q</span> and <span class="math inline">n_1</span>, meaning corollary 2 is true.</p>
+            </div>
+            <p>The above proofs also work for any other numbers that are closed under division by 2. In particular,</p>
+            <div class="theorem">
+            <p>There is no smallest real number larger than <span class="math inline">x</span> nor a largest real number smaller than <span class="math inline">r</span> for any <span class="math inline">r \in \mathbb R</span></p>
+            </div>
+            <p>The proofs of Theorem 1 and Corollaries 1 and 2 apply, <em>mutatis mutandis</em>, to Theorem 2 as well.</p>
+            <div class="aside long">
+            <p>The Latin phrase <q><em>mutatis mutandis</em></q> means <q>with the necessary changes</q> and is used in formal writing to mean <q>copy-paste is not enough, but we know you can figure out the small changes that are needed so we’re not going to waste your time listing them.</q> In this case, the changes are replacing all <span class="math inline">\mathbb Q</span> with <span class="math inline">\mathbb R</span> and all references to <q>rational</q> with <q>real</q>.</p>
+            <p>Some authors feel that saying <em>mutatis mutandis</em> is inappropriate: either you should trust the reader to know that there are trivial changes needed without saying so, or the changes were not trivial enough to elide in this way. I was trained by logicians who felt that adding it added clarity, indicating that some changes are needed. You are welcome to pick your own feelings on this point.</p>
+
+            </div>
+            <h1 data-number="2" id="open-sets" data-number="2"><span class="header-section-number">2</span> Open Sets</h1>
+            <div class="definition">
+            <p>A non-empty set is said to be <strong>open</strong> if its members are ordered but it has no largest or smallest element.</p>
+            </div>
+            <div class="theorem">
+            <p>For any <span class="math inline">q_1, q_2 \in \mathbb Q \;.\; q_1 &lt; q_2</span>, the set defined as <span class="math inline">\big\{ q \;\big|\; q \in \mathbb Q \land q_1 &lt; q &lt; q_2 \}</span> is an open set.</p>
+            </div>
+            <div class="proof">
+            <p>Let <span class="math inline">A(q_1, q_2) = \big\{ q \;\big|\; q \in \mathbb Q \land q_1 &lt; q &lt; q_2 \}</span> The smallest element of <span class="math inline">A(q_1,q_2)</span> would then be the smallest rational number larger than <span class="math inline">q_1</span> which, per corollary 1, does not exist, so <span class="math inline">A(q_1,q_2)</span> has no smallest element. By a similar logic and corollary 2, <span class="math inline">A(q_1,q_2)</span> also has no largest element. Thus, it is an open set.</p>
+            </div>
+            <p>Some authors refer to sets with a largest but not smallest element (or a smallest but not largest) as <q>half-open,</q> while others call such sets simply <q>open.</q></p>
+            <p>A set that is not open is called <strong>closed</strong>, but that term is a bit nuanced in use. Some sets are unambiguously closed, like <span class="math inline">\{x \;|\; x \in \mathbb R \land -1\leq x\leq 1\}</span>, but others have open-like gaps inside them, like <span class="math inline">\{x \;|\; x \in \mathbb R \land -1\leq x &lt; 1 \lor 2 &lt; x \leq 3\}</span>. How to handle such sets, and if they ought to be called closed or not, is beyond the scope of this course.</p>
+            <p>Because open sets exist, proofs that rely on a smallest element of a set, such as the well ordering principle and many inductive proofs, need to first verify that the set they are handling has such a smallest element.</p>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2020 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2020-01-09 14:37
+  </footer>
+</body>
+</html>

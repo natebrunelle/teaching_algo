@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>CSTheory - Exercise 5 Non-determined to win</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">CS Theory &ndash; Exercise 5 Non-determined to win</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text"><a href="index.html">Home</a></p></li>
+          <li><p class="navbar-text"><a href="structure.html">Course Structure</a></p></li>
+          <li><p class="navbar-text"><a href="oh.html">OH</a></p></li>
+          <li><p class="navbar-text"><a href="syllabus.html">Syllabus</a></p></li>
+          <li><p class="navbar-text"><a href="https://kytos.cs.virginia.edu/cstheory/">Assignments</a></p></li>
+          <li><p class="navbar-text"><a href="schedule.html">Schedule</a></p></li>
+          <li><p class="navbar-text"><a href="weekly_guides.html">Weekly Guides</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+        <ul>
+          <li class="nav-header">Table of Contents</li>
+        </ul>
+        <ul>
+        <li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+        <li><a href="#exercise-5-1-programming-problems"><span class="toc-section-number">2</span> Exercise 5-1: Programming Problems</a>
+        <ul>
+        <li><a href="#deliverable"><span class="toc-section-number">2.1</span> Deliverable</a>
+        <ul>
+        <li><a href="#huntingtons-disease"><span class="toc-section-number">2.1.1</span> Huntingtons Disease</a></li>
+        </ul></li>
+        </ul></li>
+        <li><a href="#exercise-5-2-written-problem."><span class="toc-section-number">3</span> Exercise 5-2 Written problem.</a>
+        <ul>
+        <li><a href="#deliverable-1"><span class="toc-section-number">3.1</span> Deliverable</a></li>
+        </ul></li>
+        </ul>
+        </div>
+      </div>
+            <div class="span9">
+                  <blockquote style="background-color:#fbb; font-size:150%">This page is currently under construction. Any content you see now is subject to change until the start of the coming semester. Expect some links to be broken.</blockquote>
+      <h1 data-number="1" id="introduction" data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+      <p>The purpose of this assignment is to use Non-determinstic finite state automata and regular expressions as models of computing. To start with, you will be implementing several computations as Non-Deterministic Finite State Automata (NFAs). Next you’ll be implementing computations with regular expressions.</p>
+      <h1 data-number="2" id="exercise-5-1-programming-problems" data-number="2"><span class="header-section-number">2</span> Exercise 5-1: Programming Problems</h1>
+      <p>You have been provided with python/java code to simulate non-determinsitic finite state automata, and to convert regular expressions into finite state automata.</p>
+      <p>I hope that you at least glance through the programs delivered to you. Every component of these programs (except one) has been discussed in class, and was implemented using the same approach discussed in class. The <code>NFA</code> program implements the definition of NFAs discussed in class. The constructions for union, concatenation, and kleene star match the constructions we discussed in class. The procedure for constructing a NFA that’s equivalent to a regex matches that procedure we discussed in class. The only complex thing done in the programs for this assignment that was never discussed in class is a procedure for <q>parsing</q> a regular expression so that we know which operations act on which sub-expressions. You don’t need to understand how that works, but it could be <q>fun</q> for you to try to figure out how to do that on your own.</p>
+      <h2 data-number="2.1" id="deliverable" data-number="2.1"><span class="header-section-number">2.1</span> Deliverable</h2>
+      <p>Before you begin on this assignment, you will need to download two (or three) files, depending on your programming language of choice:</p>
+      <ul>
+      <li>Java: <a href="files/exercises/exercise5_java/NFA.java">NFA.java</a>, <a href="files/exercises/exercise5_java/Tuple.java">Tuple.java</a>, <a href="files/exercises/exercise5_java/Regex.java">Regex.java</a>, and <a href="files/exercises/exercise5_java/Exercise5.java">Exercise5.java</a>.</li>
+      <li>Python: <a href="files/exercises/exercise5_python/NFA.py">NFA.py</a>, <a href="files/exercises/exercise5_python/regex.py">regex.py</a>, and <a href="files/exercises/exercise5_python/exercise5.py">exercise5.py</a></li>
+      </ul>
+      <p>The <code>NFA</code> program defines an NFA class (similar to the DFA class you had for exercise 4.1). The <code>regex</code> program defines a class that reads regular expressions and converts them to NFAs. The <code>exercise5</code> program contains example uses of the <code>NFA</code> and <code>regex</code> functionality, and also contains stubs for the functions you must implement.</p>
+      <p>The <code>Tuple</code> program (java only) pairs together a state and a character (these paired are the input type for the transition function), and makes the syntax for implementing transitions a bit nicer.</p>
+      <p>(<strong>If you’re using java, do not add a package declaration to your program.</strong>)</p>
+      <p>For this exercise you will be implementing four functions. The functions you are implementing are in the <code>exercise5</code> (either .py or .java) files, and only submit your <code>exercise5</code> file. You should not need to make any edits to any other files, and you will not submit it.</p>
+      <p>In both the python and java code, to create a NFA you must define the 5 components we discussed in class:</p>
+      <ul>
+      <li>State set</li>
+      <li>alphabet set</li>
+      <li>starting state</li>
+      <li>set of final states</li>
+      <li>transition function</li>
+      </ul>
+      <p>The state set is a set of strings, the alphabet is a set of characters, the starting state is a string (that should be in your state set as well), the set of final states is a set of string (and should be a subset of the state set), and the transition function is a map/dictionary (it maps state-character tuples to sets of states). The state-character pairs are encapsulated by the <code>Tuple</code> class in java.</p>
+      <p>After you create an automaton, you will need to test and debug it on your own. I have given you some pretty powerful tools to be able to do this. If you have a NFA in your program called <code>nfa</code>:</p>
+      <ul>
+      <li>You can convert an automaton to a string describing it using <code>nfa.toString()</code> in Java, or <code>str(nfa)</code> in python. This will display to you everything you might want to know about the automaton (currently active state, start state, transitions, final states, etc.)</li>
+      <li>You can use <code>nfa.step(character)</code> to transition on a single character. Its return value is a boolean representing whether or not there is a final state among the now-active states. You can use <code>nfa.active</code> to get the set of its currently active states.</li>
+      <li>You can use <code>nfa.execute(string)</code> to run the machine on a given input string, its return value is a boolean representing whether or not there is a final state among the states that are active at the end.</li>
+      <li>You can visualize the automaton by invoking <code>nfa.toDot()</code>. This method will print out a description of the automaton in the dot file format, which you can then convert into an image using an <a href="https://dreampuf.github.io/GraphvizOnline/">online tool</a>. To see your automaton, invoke <code>nfa.toDot()</code> and then copy-paste the printed text into the web tool.</li>
+      </ul>
+      <h3 data-number="2.1.1" id="huntingtons-disease" data-number="2.1.1"><span class="header-section-number">2.1.1</span> Huntingtons Disease</h3>
+      <p>For the <code>huntingtons</code> function you’re asked to implement, the idea is for you to use regular expressions to diagnose whether a person has Huntington’s disease by looking at their genome.</p>
+      <p>A dna sequence is a string of the characters a, t, g, c, representing the sequence of nucleotides that comprise an individual’s dna molecules. Very often, the human genome has regions where the same nucleotide sequences repeat many times. Sometimes, certain numbers of these repeats will result in a genetic disorder.</p>
+      <p>Huntington’s Disease is caused by having too many consecutive copies of the sequence <q>cag</q>. By looking at a dna sequence, we can categorize how a person might be affected by Huntington’s in the following way:</p>
+      <ul>
+      <li>An individual with less than 26 sequential repeats of <q>cag</q> in their genome is considered to be <q>normal</q>.</li>
+      <li>An individual with between 26 and 35 repeats of <q>cag</q> is considered to be a <q>carrier</q>, and may give the disease to their children.</li>
+      <li>An individual with between 36 and 39 repeats is said to be <q>at risk</q>, and may or may not ever show symptoms.</li>
+      <li>An individual with 40 or more repeats is said to be <q>affected</q>, and will eventually show symptoms of the disease.</li>
+      </ul>
+      <p>Your <code>huntingtons</code> function should take a dna sequence (a string from the alphabet a,g,t,c) and determine the classification for the individual (i.e. normal, carrier, at risk, or affected). To do this, define a regex for each category, convert each to a nfa, then check which category the given dna sequence falls into. Once you have determined the category, the function should return the appropriate string of: <q>normal</q>, <q>carrier</q>, <q>at risk</q>, or <q>affected</q></p>
+      <p>Note that the dna sequence may have characters before/after the <q>cag</q> repeats.</p>
+      <p><a href="https://en.wikipedia.org/wiki/Huntington%27s_disease">Source describing Huntingtons</a>.</p>
+      <h1 data-number="3" id="exercise-5-2-written-problem." data-number="3"><span class="header-section-number">3</span> Exercise 5-2 Written problem.</h1>
+      <p>Answer the problem contained in <a href="files/exercises/exercise5.pdf">this pdf</a> with an accompanying proof.</p>
+      <p>To begin, download <a href="files/exercises/exercise5.zip">exercise5.zip</a> and upload as a new project in overleaf. Within that zip you will see 2 tex files. the <code>exercise5.tex</code> file contains the code which generates the pdf, and <code>exercise5_2.tex</code> is where you will provide your answer.</p>
+      <p>First, change <code>\submitter{TODO: your name}</code> in <code>exercise5.tex</code> to contain your name and UVA email id (e.g. <code>\submitter{Grace Hopper (gmh1a)}</code>)</p>
+      <p>Next, cite all your sources in <code>\collaborators{TODO: replace ...}</code> according to the <a href="https://www.cs.virginia.edu/~njb2b/cstheory/s2020/syllabus.html#no-plagiarism-nor-anything-like-it">course policy</a></p>
+      <p>At this point, fill in your solution in the tex file. When you rebuild the pdf, your solutions should appear as you write them.</p>
+      <h2 data-number="3.1" id="deliverable-1" data-number="3.1"><span class="header-section-number">3.1</span> Deliverable</h2>
+      <p>At the very top of <code>exercise5.tex</code> there is a line which reads <code>\usepackage{uvatoc}</code>. That line tells LaTeX include everything in the pdf. To include only your solution, comment that line out and uncomment <code>\usepackage[response2]{uvatoc}</code> to build a pdf with only exercise 5-2.</p>
+      <p>Rename the pdf file and submit to the <a href="https://kytos.cs.virginia.edu/cstheory">assignments page</a>.</p>
+            </div>
+    </div>
+  </div>
+  <footer>
+          Copyright © 2021 Nathan Brunelle.
+              <p>Released under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /> CC-BY-NC-SA 4.0</a> license</a>.
+      </p>
+    
+     <br/>
+     Last updated 2021-01-21 16:56
+  </footer>
+</body>
+</html>
