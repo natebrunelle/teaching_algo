@@ -58,10 +58,10 @@ In the first lecture I cover:
 
 I also typically cover course logistics and some syllabus content. Those have been omitted from the video below.
 
-<p>
+<center><p>
 Introduction to Graphs (15:43)<br>
 <iframe width="560" height="315" src="https://youtube.com/embed/bUyWLT5MKEw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-</p>
+</p></center>
 
 <div style="display:table; font-size:200%; margin: 1em auto; padding:1ex; box-shadow: 0 1px 10px rgba(0,0,0,.1); border: thin solid #eee; border-radius:1ex; background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);">[Slides (pptx)](https://virginia.zoom.us/j/96370348427?pwd=clQzSEhWRHpnS2xYVGRQU3hHbU5Odz09)</div><div style="display:table; font-size:200%; margin: 1em auto; padding:1ex; box-shadow: 0 1px 10px rgba(0,0,0,.1); border: thin solid #eee; border-radius:1ex; background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);">[Slides (pdf)](https://virginia.zoom.us/j/96370348427?pwd=clQzSEhWRHpnS2xYVGRQU3hHbU5Odz09)</div>
 
