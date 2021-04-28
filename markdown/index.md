@@ -7,6 +7,7 @@ title: Algorithms
 I outline an algorithms course that I taught (with minor modifications) in Fall 2017, Spring 2018, Fall 2018 (co-instructor Robbie Hott), and Fall 2020 (co-instructor David Wu). I drew design inspiration from algorithms classes taught by Abhi Shelat in Spring 2016, by Mark Floryan in Fall 2016, Gabriel Robins in Fall 2015. The textbook which covers the most closely matches the content covered is *Introduction to Algorithms 3rd edition* by Cormen, Leiserson, Rivest, and Stein (aka CLRS). All slides and videos provided on this page come from Fall 2018.
 
 My overall goals when designing this algorithms course are to:
+
 - Develop a skill of algorithm design
 - Understand different algorithm design paradigms, including what problem properties lend themselves to different strategies
 - Learn how to justify the correctness and efficiency of algorithms
@@ -14,6 +15,7 @@ My overall goals when designing this algorithms course are to:
 - Provide "toy" problems to serve as easy-to-grasp but faithful introductions to each topic
 
 One aspect of the course that I'm particularly proud of are the warm-up questions. Nearly every lecture begins with a warm-up question. These questions are serve to:
+
 - Introduce a key idea,
 - Refresh background material,
 - Reinforce lessons from a prior week, or
