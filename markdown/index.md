@@ -2,7 +2,9 @@
 title: Algorithms
 ...
 
-On this page I outline an algorithms course that I taught (with minor modifications) in Fall 2017, Spring 2018, Fall 2018 (co-instructor Robbie Hott), and Fall 2020 (co-instructor David Wu). I drew design inspiration from algorithms classes taught by Abhi Shelat in Spring 2016, by Mark Floryan in Fall 2016, Gabriel Robins in Fall 2015. The textbook which covers the most closely matches the content covered is *Introduction to Algorithms 3rd edition* by Cormen, Leiserson, Rivest, and Stein (aka CLRS). All slides and videos provided on this page come from Fall 2018.
+# Course Design Philosophy
+
+I outline an algorithms course that I taught (with minor modifications) in Fall 2017, Spring 2018, Fall 2018 (co-instructor Robbie Hott), and Fall 2020 (co-instructor David Wu). I drew design inspiration from algorithms classes taught by Abhi Shelat in Spring 2016, by Mark Floryan in Fall 2016, Gabriel Robins in Fall 2015. The textbook which covers the most closely matches the content covered is *Introduction to Algorithms 3rd edition* by Cormen, Leiserson, Rivest, and Stein (aka CLRS). All slides and videos provided on this page come from Fall 2018.
 
 My overall goals when designing this algorithms course are to:
 - Develop a skill of algorithm design
@@ -84,7 +86,7 @@ I also typically cover course logistics and some syllabus content. Those have be
 
 This unit covers the divide-and-conquer strategy for algorithm design. In my opinion, the strategy is easiest to wield if it's thought of as a recursive strategy. I simply find that defining the algorithm, proving correctness, and running time analysis are all simpler and easier to explain recursively. 
 
-With a recursive definition, the algorithm definition can be broken into four major parts: base case, divide (identifying subproblems), conquer (recursively solving each subproblem), and combine (using subproblem solutions to determine the algorithm's output). The correctness can be proved using induction. The running time analysis 
+With a recursive definition, the algorithm definition can be broken into four major parts: base case, divide (identifying subproblems), conquer (recursively solving each subproblem), and combine (using subproblem solutions to determine the algorithm's output). The correctness can be proved using induction. The running time analysis can be done using recurrence relations. As such, methods for solving recurrences are included in this unit. 
 
 # Unit 2: Sorting and Searching
 
