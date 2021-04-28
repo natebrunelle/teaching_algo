@@ -47,6 +47,18 @@ In particular, we assume elementary knowledge of:
 - Hash Tables
 - Graphs
 
+# Unit 0: Course Introduction
+
+# Unit 1: Divide and Conquer
+
+# Unit 2: Sorting and Searching
+
+# Unit 3: Dynamic Programing
+
+# Unit 4: Greedy
+
+# Unit 5: Reductions and NP-Completeness
+
 
 
 
