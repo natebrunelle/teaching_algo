@@ -1,73 +1,51 @@
 ---
-title: Theory of Computation
+title: Algorithms
 ...
-
-<div style="display:table; font-size:200%; margin: 1em auto; padding:1ex; box-shadow: 0 1px 10px rgba(0,0,0,.1); border: thin solid #eee; border-radius:1ex; background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);">[I'm New To This Course](catch_me_up.html)</div>
 
 
 # Course Description
 
-  The goal of this course is to understand the
-  fundamental limits on what can be efficiently computed in our
-  universe and other possible (or imaginary) universes. These limits
-  reveal deep and mysterious properties about information,
-  communication, and computing, as well as practical issues about how
-  to solve problems.
+The goal of this course is to build a tool kit to better solve a variety of computational problems, and to evaluate the quality of such solutions. In particular, we will cover:
 
+- Formal metrics for evaluating algorithm complexity (including the asymptotic classes big-oh, big-omega, big-theta, little-oh, and little-omega)
+- Evaluating an algorithm's usage of resources (including time and space complexities) by a worst-case analysis, expected-case analysis, and amortized analysis
+- Algorithm design strategies (including divide and conquer, dynamic programming, greedy, and reductions)
+- The impact of data-structure choice on algorithm design
+- Proving algorithm correctness
+- Proving worst-case lower bounds on algorithm efficiency
+- Discussion of randomized algorithms and expected efficiency
+- Algorithms on graphs
+- NP-Completeness
 
-Two fundamental questions about any problem are:
- 
- 1. _Can it be solved using a machine of a certain type?_ (computability)
- 2. _How much does it cost to solve it?_ (complexity)
- 
-We explore these questions by developing abstract models of computing
-machines and reasoning about what they can and cannot compute
-efficiently.  We will also look at some applications in cryptography
-that take advantage of problems being hard to solve, and what can be
-done when a problem cannot be solved or is too expensive to solve.
+## Learning Outcomes
 
-# Course Objectives
+At the conclusion of this course, a successful student will be able to:
 
-Students who complete the course will:
-
-- Improve their [mathematical thinking skill and
-  habits](https://medium.com/@jeremyjkun/habits-of-highly-mathematical-people-b719df12d15e),
-  including thinking precisely about definitions, stating assumptions
-  carefully, critically reading arguments, and being able to write
-  convincingly.
-
-- Be able to understand both finite and infinite formal models of computation and to reason about what they can and cannot compute.
-- Understand both intuitively and formally what makes some problems too expensive to solve, and what can be done in practice when an unsolvable or intractable problem is encountered.
-- Reason formally about the cost of computation, and be able to prove useful bounds on the costs of solving problems, including showing that certain problems are intractable.
-- Learn about some interesting aspects of theoretical computer science, including cryptography and machine learning.
-
-
-## Eligibility
-
-**Official Prerequisites:** CS 2102 and CS 2110 (or comparable
-  courses) with grades of at least a C- (if taken for a grade) or CR (if taken using the COVID Credit/No Credit option). (We will waive this
-  prerequisite for students who convince us that they satisfy the
-  expected background below.)
-  
+- Analyze a pre-written algorithm to determine its resource complexity
+- Employ the strategies of divide and conquer, greedy, and dynamic programming (perhaps in concert) to develop novel algorithms
+- Prove the correctness of algorithms built using these strategies
+- Identify trade-offs in algorithm design (such as time vs. space, average-case vs. worst case, dynamic vs. static)
+- Prove lower bounds on algorithm complexity
 
 ## Background
 
-This course will assume knowledge of several topics from discrete math (CS2102 at UVA), and object-oriented Java programming (taught in CS2110 at UVA).
+This course will assume knowledge of several topics from discrete math (CS2102 at UVA), two semesters of programming experience (through CS2110 at UVA), and data structures (CS2150 at UVA)
 
-In particular, we assume knowledge of (with recommended resources for review):
+In particular, we assume elementary knowledge of:
 
-- Sets ([CS2102 Sets Primer](http://www.cs.virginia.edu/luther/DMT1/S2020/sets.html))
-- Functions ([Section 4.3 of this text](http://www.cs.virginia.edu/luther/DMT1/S2020/files/mcs.pdf))
-- Proof Techniques ([CS2102 Proof Techniques](http://www.cs.virginia.edu/luther/DMT1/S2020/techniques-q8.html))
-- Proof Styles, we'll mostly be using "prose proofs" ([CS2102 Proof style guide](http://www.cs.virginia.edu/luther/DMT1/S2020/proofs.html))
-- Logic and Notation ([CS2102 Glossary of logical terms](http://www.cs.virginia.edu/luther/DMT1/S2020/glossary.html))
-- Java Programming ([Java wikibook](https://en.wikibooks.org/wiki/Java_Programming))
-
-For each of the CS2102 topics, you can view last [semester's lectures](http://www.cs.virginia.edu/luther/DMT1/F2019/schedule.html) for more information
-
-
-
-
+- Logarithms and identities 
+- Sets 
+- Functions 
+- Proof Techniques 
+- Proof Styles
+- Logic and Notation
+- Recursion 
+- Trees
+- Queues
+- Stacks
+- Priority Queues
+- Hash Tables
+- Graphs
 
 
 
