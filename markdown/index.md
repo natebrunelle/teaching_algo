@@ -49,6 +49,20 @@ In particular, we assume elementary knowledge of:
 
 # Unit 0: Course Introduction
 
+In the first lecture I cover:
+
+- A definition of the work "algorithm"
+- Two algorithms for computing pi, including a discussion for how we can compare the "quality" of the two algorithms
+- A paralellizable algorithm for taking attendance
+- What to expect in the course
+
+I also typically cover course logistics and some syllabus content. Those have been omitted from the video below.
+
+<p>
+Introduction to Graphs (15:43)<br>
+<iframe width="560" height="315" src="https://youtube.com/embed/bUyWLT5MKEw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+</p>
+
 # Unit 1: Divide and Conquer
 
 # Unit 2: Sorting and Searching
