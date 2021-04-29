@@ -77,28 +77,78 @@ In the first lecture I cover:
 
 I also typically cover course logistics and some syllabus content. Those have been omitted from the video below.
 
+## Lecture 1: Intro
+
 
 <center><p>
-<iframe width="560" height="315" src="https://youtube.com/embed/bUyWLT5MKEw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+<iframe width="560" height="315" src="https://youtube.com/embed/xSAo6CrvhXE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
 
 
-<div style="display:table-cell; font-size:100%; margin: 1em auto; padding:1ex; box-shadow: 0 1px 10px rgba(0,0,0,.1); border: thin solid #eee; border-radius:1ex; background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);">[Slides (pptx)](https://virginia.zoom.us/j/96370348427?pwd=clQzSEhWRHpnS2xYVGRQU3hHbU5Odz09)</div> <div style="display:table-cell; font-size:100%; margin: 1em auto; padding:1ex; box-shadow: 0 1px 10px rgba(0,0,0,.1); border: thin solid #eee; border-radius:1ex; background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);">[Slides (pdf)](https://virginia.zoom.us/j/96370348427?pwd=clQzSEhWRHpnS2xYVGRQU3hHbU5Odz09)</div></center>
+<div style="display:table-cell; font-size:100%; margin: 1em auto; padding:1ex; box-shadow: 0 1px 10px rgba(0,0,0,.1); border: thin solid #eee; border-radius:1ex; background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);">[Slides (pptx)]()</div> <div style="display:table-cell; font-size:100%; margin: 1em auto; padding:1ex; box-shadow: 0 1px 10px rgba(0,0,0,.1); border: thin solid #eee; border-radius:1ex; background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);">[Slides (pdf)]()</div></center>
 
 # Unit 1: Divide and Conquer
 
 This unit covers the divide-and-conquer strategy for algorithm design. In my opinion, the strategy is easiest to wield if it's thought of as a recursive strategy. I simply find that defining the algorithm, proving correctness, and running time analysis are all simpler and easier to explain recursively. 
 
-With a recursive definition, the algorithm definition can be broken into four major parts: base case, divide (identifying subproblems), conquer (recursively solving each subproblem), and combine (using subproblem solutions to determine the algorithm's output). The correctness can be proved using induction. The running time analysis can be done using recurrence relations. As such, methods for solving recurrences are included in this unit. 
+With a recursive definition, the algorithm definition can be broken into four major parts: base case, divide (identifying subproblems), conquer (recursively solving each subproblem), and combine (using subproblem solutions to determine the algorithm's output). The correctness can be proved using induction. The running time analysis can be done using recurrence relations. As such, methods for solving recurrences are included in this unit.
+
+## Lecture 2: Introducing Divide and Conquer
+
+## Lecture 3: Karatsuba And Tree Method
+
+## Lecture 4: Guess and Check
+
+## Lecture 5: Master Theorem
+
+## Lecture 6: Closest Pair of Points
+
+## Lecture 7: Strassen's Algorithm and Quicksort
 
 # Unit 2: Sorting and Searching
 
+## Lecture 8 : Quickselect and Median-of-Medians
+
+## Lecture 9: Randomized Quicksort and Decision Trees
+
+## Lecture 10: Sorting Algorithm Menagerie
+
+## Lecture 11: Linear Time Sorting
+
 # Unit 3: Dynamic Programing
+
+## Lecture 12: Introducing Dynamic Programming
+
+## Lecture 13: Matrix Chain Multiplication
+
+## Lecture 14: Longest Common Subsequence and Seam Carving
+
+## Lecture 15: Gerrymandering
 
 # Unit 4: Greedy
 
-# Unit 5: Reductions and NP-Completeness
+## Lecture 16: Greedy
 
+## Lecture 17: Huffman Coding
 
+## Lecture 18: Belady Cache Replacement
+
+# Unit 5: Graph Algorithms
+
+## Lecture 19: Minimum Spanning Trees
+
+## Lecture 20: Disjkstra's Algorithm
+
+## Lecture 21: Bellman-Ford
+
+## Lecture 22: Maxflow Mincut
+
+# Unit 6: Reductions and NP-Completeness
+
+## Lecture 23: Bipartite Matching
+
+## Lecture 24: Reductions and NP
+
+## Lecture 25: NP-Completeness
 
 
 
